@@ -1,0 +1,8 @@
+G:\repos\17s-term\AppArch\LabComponents\bin\Debug\LabComponents.dll
+G:\repos\17s-term\AppArch\LabComponents\bin\Debug\LabComponents.pdb
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.csproj.GenerateResource.Cache
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.dll
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.pdb
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.ColorPanel.resources
+G:\repos\17s-term\AppArch\LabComponents\obj\Debug\LabComponents.g.resources
