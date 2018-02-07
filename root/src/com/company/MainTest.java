@@ -9,17 +9,17 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class MainTest {
 
-    //данные для тестирования:
-    //матрица и ее размеры
+    //testing data:
+    //matrix and its ranges
     public static double[][] matrix;
     public static int n,m;
 
     @BeforeAll
-    //генерация случайных данных перед каждым тестом
+    //random data gen before each test
     public static void GenData(){
         Random f=new Random(LocalDateTime.now().getNano());
-        n=f.nextInt(20);
-        m=f.nextInt(20);
+        n=f.nextInt(18)+2;
+        m=f.nextInt(18)+2;
 
         matrix=new double[n][m];
         for(int i=0;i<n;i++)
@@ -27,37 +27,37 @@ public class MainTest {
                 matrix[i][j]=f.nextDouble();
     }
 
-    //конструктор по умолчанию
+    //default constructor
     public MainTest(){
 
     }
 
     @Test
-    //проверка выхода за диапазон для метода
+    //checking out of bounds for method
     //Main.FindMaxesInRows()
     public void IndexOutOfBounds1(){
         try{
-            //задаем размеры, большие исходных
+            //hand ranges, greater than n & m
             Main.FindMaxesInRows(matrix,n+1,m+2);
         }
         catch (ArrayIndexOutOfBoundsException ex){
-            //если сгенерировано правильное исключение
-            //выходим, иначе тест не пройден
+            //if correct exception thrown
+            //return, else test did not pass
             return;
         }
         fail("");
     }
 
     @Test
-    //проверка на отрицательный индекс
+    //check for negative index
     public void NegativeRange(){
         try{
-            //задаем отрицательные размеры
-            //в данном методе будет попытка создать
-            //массив с такими размерами
+            //hand negative index
+            //in this method will be creation
+            //matrix with this ranges
             Main.FindMaxesInRows(matrix,-1,-1);
         }
-        //исключение отрицательного размера массива
+        //negative index exception
         catch (NegativeArraySizeException ex){
             return;
         }
@@ -65,8 +65,8 @@ public class MainTest {
     }
 
     @Test
-    //выход за диапазон
-    //в методе сортировки(по строкам)
+    //out of bounds
+    //in sort method(rows)
     public void IndexOutOfBounds2(){
         try{
             Main.BubbleSort(matrix,n+1);
@@ -78,11 +78,12 @@ public class MainTest {
     }
 
     @Test
-    //выход за диапазон
-    //в методе сортировки(по столбцам)
+    //out of bounds
+    //in sort method(columns)
     public void IndexOutOfBounds3(){
-        //для выхода за границы создадим массив
-        //из одного столбца(массив сортируется по второму столбцу)
+        //for throwing out of bounds exception
+        //we create matrix with one column
+        //method sort second column
         double value[][]=new double[n][1];
         for(int i=0;i<n;i++)
             value[i][0]=matrix[i][0];
@@ -96,24 +97,23 @@ public class MainTest {
     }
 
     @Test
-    //проверка правильности нахождения
-    //максимальных значений в строках матрицы
+    //check for correct max elements
     public void MaxesInRows(){
         double maxes[][]=Main.FindMaxesInRows(matrix,n,m);
         for(int i=0;i<n;i++)
             for(int j=0;j<m;j++)
-                //сравниваем каждый элемент строки с максимальным
+                //compare each element with max
                 if(matrix[i][j]>maxes[i][1])
                     fail("");
     }
 
     @Test
-    //проверка порядка элементов после сортировки
+    //check elements order after sort
     public void SortOrder(){
         double maxes[][]=Main.FindMaxesInRows(matrix,n,m);
         Main.BubbleSort(maxes,n);
         for(int i=0;i<n-1;i++)
-            //проверка неубывания элементов второго столбца
+            //check non descending order for second column elements
             if(maxes[i][1]>maxes[i+1][1])
                 fail("");
     }
