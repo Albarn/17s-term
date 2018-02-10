@@ -1,0 +1,11 @@
+G:\repos\17s-term\AppArch\Lib2\bin\Debug\Lib2.dll
+G:\repos\17s-term\AppArch\Lib2\bin\Debug\Lib2.pdb
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.dll
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.pdb
+G:\repos\17s-term\AppArch\Lib2\bin\Debug\Lib1.dll
+G:\repos\17s-term\AppArch\Lib2\bin\Debug\Lib1.pdb
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.ItemsDetails.resources
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.ItemsView.resources
+G:\repos\17s-term\AppArch\Lib2\obj\Debug\Lib2.csproj.GenerateResource.Cache

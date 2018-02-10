@@ -1,0 +1,5 @@
+G:\repos\17s-term\AppArch\Lib1\bin\Debug\Lib1.dll
+G:\repos\17s-term\AppArch\Lib1\bin\Debug\Lib1.pdb
+G:\repos\17s-term\AppArch\Lib1\obj\Debug\Lib1.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\AppArch\Lib1\obj\Debug\Lib1.dll
+G:\repos\17s-term\AppArch\Lib1\obj\Debug\Lib1.pdb

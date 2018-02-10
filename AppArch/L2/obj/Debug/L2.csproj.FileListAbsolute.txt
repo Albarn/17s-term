@@ -1,0 +1,14 @@
+G:\repos\17s-term\AppArch\L2\bin\Debug\L2.exe.config
+G:\repos\17s-term\AppArch\L2\bin\Debug\L2.exe
+G:\repos\17s-term\AppArch\L2\bin\Debug\L2.pdb
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.Properties.Resources.resources
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.csproj.GenerateResource.Cache
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.exe
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.pdb
+G:\repos\17s-term\AppArch\L2\bin\Debug\Lib1.dll
+G:\repos\17s-term\AppArch\L2\bin\Debug\Lib2.dll
+G:\repos\17s-term\AppArch\L2\bin\Debug\Lib2.pdb
+G:\repos\17s-term\AppArch\L2\bin\Debug\Lib1.pdb
+G:\repos\17s-term\AppArch\L2\obj\Debug\L2.Form1.resources
