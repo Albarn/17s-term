@@ -59,21 +59,21 @@ public class Headphones extends AudioOutput {
     @Override
     //set power below 1W
     public void SetPower(double power) {
-        if (power < 1)
-            super.SetPower(power);
+        if (power > 0 && power < 1)
+            this.power = power;
     }
 
     @Override
     //set price under 140000 hrn
     public void SetPrice(double price) {
-        if (price < 140000)
-            super.SetPrice(price);
+        if (price > 30 && price < 140000)
+            this.price = price;
     }
 
     @Override
     //set weight below 600g
     public void SetWeight(double weight) {
-        if (weight < 600)
-            super.SetWeight(weight);
+        if (weight > 0 && weight < 600)
+            this.weight = weight;
     }
 }

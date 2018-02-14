@@ -18,7 +18,7 @@ public class Speakers extends AudioOutput {
     @Override
     //toString method with additional parameters
     public String toString() {
-        return super.toString() + " m " + minFrequency + "-" + maxFrequency + " Hz " + (portable ? "portable" : "");
+        return super.toString() + minFrequency + "-" + maxFrequency + " Hz " + (portable ? "portable" : "");
     }
 
     //getter for maxFrequency
@@ -46,21 +46,21 @@ public class Speakers extends AudioOutput {
     @Override
     //set power below 1500W
     public void SetPower(double power) {
-        if (power < 1500)
-            super.SetPower(power);
+        if (power > 0 && power < 1500)
+            this.power = power;
     }
 
     @Override
     //set price under 5500000 hrn
     public void SetPrice(double price) {
-        if (price < 5500000)
-            super.SetPrice(price);
+        if (price > 50 && price < 5500000)
+            this.price = price;
     }
 
     @Override
     //set weight between 1000 and 10000
     public void SetWeight(double weight) {
-        if (weight > 1000 & weight < 10000)
-            super.SetWeight(weight);
+        if (weight > 1000 && weight < 10000)
+            this.weight = weight;
     }
 }

@@ -1,13 +1,15 @@
 //audio output device class
-public class AudioOutput {
+//патерн builder hi fi система
+//построение системы из данных классов
+public abstract class AudioOutput {
     //name of device
     public String name;
     //price in ukrainian hryvnia
-    private double price;
+    protected double price;
     //device power in W
-    private double power;
+    protected double power;
     //device weight in grammes
-    private double weight;
+    protected double weight;
 
     //create device with its name
     public AudioOutput(String name) {
@@ -61,7 +63,7 @@ public class AudioOutput {
 
 
     //find device in array with maximum price
-    public AudioOutput MaxPrice(AudioOutput[] devices) {
+    public static AudioOutput MaxPrice(AudioOutput[] devices) {
         int n = devices.length;
         //if no elements in array - return null
         if (n == 0) return null;
@@ -76,7 +78,7 @@ public class AudioOutput {
     }
 
     //find device in array with minimum price
-    public AudioOutput MinPrice(AudioOutput[] devices) {
+    public static AudioOutput MinPrice(AudioOutput[] devices) {
         int n = devices.length;
         //if no elements in array - return null
         if (n == 0) return null;
@@ -102,10 +104,7 @@ public class AudioOutput {
     }
 
     //set correct positive price
-    public void SetPrice(double price) {
-        if (price > 0)
-            this.price = price;
-    }
+    public abstract void SetPrice(double price);
 
     //getter for power
     public double GetPower() {
@@ -113,10 +112,7 @@ public class AudioOutput {
     }
 
     //set correct positive power
-    public void SetPower(double power) {
-        if (power > 0)
-            this.power = power;
-    }
+    public abstract void SetPower(double power);
 
     //getter for weight
     public double GetWeight() {
@@ -124,8 +120,5 @@ public class AudioOutput {
     }
 
     //set correct positive weight
-    public void SetWeight(double weight) {
-        if (weight > 0)
-            this.weight = weight;
-    }
+    public abstract void SetWeight(double weight);
 }
