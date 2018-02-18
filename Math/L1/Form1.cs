@@ -26,6 +26,10 @@ namespace L1
                 taskForm = new T2Form();
             if (radioButton3.Checked)
                 taskForm = new T3Form();
+            if (radioButton4.Checked)
+                taskForm = new T4Form();
+            if (radioButton5.Checked)
+                taskForm = new T5Form();
             if (taskForm != null)
             {
                 taskForm.FormClosed += TaskForm_FormClosed;

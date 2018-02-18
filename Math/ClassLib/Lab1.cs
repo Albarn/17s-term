@@ -17,7 +17,7 @@ namespace ClassLib
             return res;
         }
 
-        static void AxialStep(double[,] a, int n, int m, int r, int s)
+        public static void AxialStep(double[,] a, int n, int m, int r, int s)
         {
             double ars = a[r, s];
             if (ars == 0) return;
@@ -88,6 +88,20 @@ namespace ClassLib
                         res[i, j] += op1[i, k] * op2[k, j];
                 }
             }
+            return res;
+        }
+
+        public static double[,] CutMatrix(double[,] a,int n,int m,int r,int s)
+        {
+            double[,] res = new double[n - 1, m - 1];
+            for (int i = 0; i < r; i++)
+                for (int j = 0; j < s; j++)
+                    res[i, j] = a[i, j];
+
+            for (int i = r + 1; i < n; i++)
+                for (int j = s + 1; j < m; j++)
+                    res[i - 1, j - 1] = a[i, j];
+
             return res;
         }
     }

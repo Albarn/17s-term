@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"com.company","c":"Main","l":"BubbleSort(double[][], int)"},{"p":"com.company","c":"Main","l":"CommonWork()"},{"p":"com.company","c":"Main","l":"FindMaxesInRows(double[][], int, int)"},{"p":"com.company","c":"Main","l":"main(String[])","url":"main-java.lang.String:A-"},{"p":"com.company","c":"Main","l":"Main()"}]
