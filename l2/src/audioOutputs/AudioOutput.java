@@ -1,3 +1,5 @@
+package audioOutputs;
+
 //audio output device class
 //патерн builder hi fi система
 //построение системы из данных классов
@@ -11,17 +13,8 @@ public abstract class AudioOutput {
     //device weight in grammes
     protected double weight;
 
-    //create device with its name
-    public AudioOutput(String name) {
-        this.name = name;
-        //initialize with zero values,
-        //that indicates, that fields are
-        //undefined
-        price = power = weight = 0;
-    }
-
     //sorting devices by their name
-    public static AudioOutput[] SortByName(AudioOutput[] devices) {
+    public static AudioOutput[] sortByName(AudioOutput[] devices) {
 
         int n = devices.length;
 
@@ -42,14 +35,14 @@ public abstract class AudioOutput {
     }
 
     //sort devices by their price
-    public static AudioOutput[] SortByPrice(AudioOutput[] devices) {
+    public static AudioOutput[] sortByPrice(AudioOutput[] devices) {
 
         int n = devices.length;
 
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
 
-                //same bubble sort as in SortByName method
+                //same bubble sort as in sortByName method
                 if (devices[i].price > devices[j].price) {
                     AudioOutput z = devices[i];
                     devices[i] = devices[j];
@@ -63,7 +56,7 @@ public abstract class AudioOutput {
 
 
     //find device in array with maximum price
-    public static AudioOutput MaxPrice(AudioOutput[] devices) {
+    public static AudioOutput maxPrice(AudioOutput[] devices) {
         int n = devices.length;
         //if no elements in array - return null
         if (n == 0) return null;
@@ -78,7 +71,7 @@ public abstract class AudioOutput {
     }
 
     //find device in array with minimum price
-    public static AudioOutput MinPrice(AudioOutput[] devices) {
+    public static AudioOutput minPrice(AudioOutput[] devices) {
         int n = devices.length;
         //if no elements in array - return null
         if (n == 0) return null;
@@ -99,26 +92,26 @@ public abstract class AudioOutput {
     }
 
     //getter for price
-    public double GetPrice() {
+    public double getPrice() {
         return price;
     }
 
     //set correct positive price
-    public abstract void SetPrice(double price);
+    public abstract void setPrice(double price);
 
     //getter for power
-    public double GetPower() {
+    public double getPower() {
         return power;
     }
 
     //set correct positive power
-    public abstract void SetPower(double power);
+    public abstract void setPower(double power);
 
     //getter for weight
-    public double GetWeight() {
+    public double getWeight() {
         return weight;
     }
 
     //set correct positive weight
-    public abstract void SetWeight(double weight);
+    public abstract void setWeight(double weight);
 }

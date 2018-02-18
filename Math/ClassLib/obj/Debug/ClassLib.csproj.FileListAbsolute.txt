@@ -1,0 +1,6 @@
+G:\repos\17s-term\Math\ClassLib\bin\Debug\ClassLib.dll
+G:\repos\17s-term\Math\ClassLib\bin\Debug\ClassLib.pdb
+G:\repos\17s-term\Math\ClassLib\obj\Debug\ClassLib.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\Math\ClassLib\obj\Debug\ClassLib.dll
+G:\repos\17s-term\Math\ClassLib\obj\Debug\ClassLib.pdb
+G:\repos\17s-term\Math\ClassLib\obj\Debug\ClassLib.csprojResolveAssemblyReference.cache
