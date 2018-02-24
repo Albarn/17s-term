@@ -33,7 +33,7 @@ public class FancyHeadphonesBuilder extends AudioOutputBuilder {
     public void buildInheritedFields() {
         Headphones hp=(Headphones)audioOutput;
         hp.setLength(3);
-        hp.setMinFrequency(5);
         hp.setMaxFrequency(50000);
+        hp.setMinFrequency(5);
     }
 }

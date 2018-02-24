@@ -32,7 +32,7 @@ public class FancySpeakersBuilder extends AudioOutputBuilder{
     @Override
     public void buildInheritedFields() {
         Speakers sp=(Speakers)audioOutput;
-        sp.setMinFrequency(65);
         sp.setMaxFrequency(20000);
+        sp.setMinFrequency(65);
     }
 }
