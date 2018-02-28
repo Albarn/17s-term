@@ -18,8 +18,9 @@ namespace RailwayTrips.Data
         {
             get
             {
-                return TripDate.ToString() + TrainNumber.ToString();
+                return TrainNumber.ToString()+"#"+TripDate.ToString();
             }
+
         }
         [DisplayName("Число купейных мест")] public int CompartmentPlaces { get; set; }
         [DisplayName("Число плацкартных мест")] public int ReservedPlaces { get; set; }

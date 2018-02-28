@@ -30,38 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketsView));
-            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ticketsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.ticketsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.ticketsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tripColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.trainColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fkColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingNavigator)).BeginInit();
             this.ticketsBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ticketsBindingSource
-            // 
-            this.ticketsBindingSource.DataSource = typeof(RailwayTrips.Data.Ticket);
             // 
             // ticketsBindingNavigator
             // 
@@ -92,6 +87,37 @@
             this.ticketsBindingNavigator.Size = new System.Drawing.Size(400, 25);
             this.ticketsBindingNavigator.TabIndex = 0;
             this.ticketsBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // ticketsBindingSource
+            // 
+            this.ticketsBindingSource.DataSource = typeof(RailwayTrips.Data.Ticket);
+            this.ticketsBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.ticketsBindingSource_AddingNew);
+            this.ticketsBindingSource.DataError += new System.Windows.Forms.BindingManagerDataErrorEventHandler(this.ticketsBindingSource_DataError);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -125,16 +151,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -157,26 +176,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // ticketsBindingNavigatorSaveItem
             // 
@@ -193,9 +194,8 @@
             this.ticketsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ticketsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.tripColumn,
-            this.trainColumn,
             this.dataGridViewTextBoxColumn8,
+            this.fkColumn,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn7,
@@ -206,6 +206,7 @@
             this.ticketsDataGridView.Name = "ticketsDataGridView";
             this.ticketsDataGridView.Size = new System.Drawing.Size(400, 300);
             this.ticketsDataGridView.TabIndex = 1;
+            this.ticketsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ticketsDataGridView_DataError);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -213,23 +214,25 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Номер билета";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // tripColumn
-            // 
-            this.tripColumn.DataPropertyName = "TripDate";
-            this.tripColumn.HeaderText = "Дата поездки";
-            this.tripColumn.Name = "tripColumn";
-            // 
-            // trainColumn
-            // 
-            this.trainColumn.DataPropertyName = "TrainNumber";
-            this.trainColumn.HeaderText = "Номер поезда";
-            this.trainColumn.Name = "trainColumn";
-            // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "CarriegeType";
             this.dataGridViewTextBoxColumn8.HeaderText = "Тип вагона";
+            this.dataGridViewTextBoxColumn8.Items.AddRange(new object[] {
+            "К",
+            "П",
+            "О"});
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // fkColumn
+            // 
+            this.fkColumn.DataPropertyName = "FK";
+            this.fkColumn.HeaderText = "Номер поезда/Дата поездки";
+            this.fkColumn.Name = "fkColumn";
+            this.fkColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fkColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -264,10 +267,11 @@
             this.Name = "TicketsView";
             this.Size = new System.Drawing.Size(400, 325);
             this.Load += new System.EventHandler(this.TicketsView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
+            this.Enter += new System.EventHandler(this.TicketsView_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingNavigator)).EndInit();
             this.ticketsBindingNavigator.ResumeLayout(false);
             this.ticketsBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -292,9 +296,8 @@
         private System.Windows.Forms.ToolStripButton ticketsBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView ticketsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn tripColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn trainColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn fkColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;

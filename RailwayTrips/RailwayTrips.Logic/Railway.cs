@@ -1,5 +1,6 @@
 ﻿using RailwayTrips.Data;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms; //
 
 namespace RailwayTrips.Logic
@@ -24,6 +25,29 @@ namespace RailwayTrips.Logic
         readonly Trains trains = new Trains();
         readonly Trips trips = new Trips();
         readonly Tickets tickets = new Tickets();
+
+        public bool tripExist(int trainNumber)
+        {
+            return trips.Exists(p => p.TrainNumber == trainNumber);
+        }
+
+        public bool ticketExist(int trainNumber)
+        {
+            return tickets.Exists(p => p.TrainNumber == trainNumber);
+        }
+
+        public bool ticketExist(string fk)
+        {
+            return tickets.Exists(p => p.FK==fk);
+        }
+
+        public List<string> GetPKs()
+        {
+            List<string> list = new List<string>();
+            foreach (Trip trip in trips)
+                list.Add(trip.PK);
+            return list;
+        }
 
         // Ссылки на объекты привязки данных 
         private BindingSource bsTrains;

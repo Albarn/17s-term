@@ -21,7 +21,23 @@ namespace RailwayTrips.Data
         {
             get
             {
-                return TripDate.ToString() + TrainNumber.ToString();
+                return TrainNumber.ToString() + "#" + TripDate.ToString();
+            }
+            set
+            {
+                string trainNumber = value.Substring(0, value.IndexOf('#'));
+                try
+                {
+                    TrainNumber = int.Parse(trainNumber);
+                }
+                catch { }
+
+                string date = value.Substring(value.IndexOf('#') + 1);
+                try
+                {
+                    TripDate = DateTime.Parse(date);
+                }
+                catch { }
             }
         }
         [DisplayName("Фамилия")] public string LastName { get; set; }
