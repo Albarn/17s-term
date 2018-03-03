@@ -11,12 +11,22 @@ namespace RailwayTrips.GUI
             InitializeComponent();
             Railway.Instance.BindingTrips = tripsBindingSource;
             Railway.Instance.OnEnableTripRemove += EnableRemoveTrip;
+            Railway.Instance.OnEnableTripAdd += Instance_OnEnableTripAdd;
+            Instance_OnEnableTripAdd(false);
+        }
+
+        private void Instance_OnEnableTripAdd(bool state)
+        {
+            bindingNavigatorAddNewItem.Enabled = state;
+            tripsDataGridView.AllowUserToAddRows = state;
         }
 
         private void EnableRemoveTrip(bool state)
         {
             bindingNavigatorDeleteItem.Enabled = state;
             tripsDataGridView.AllowUserToDeleteRows = state;
+            trainColumn.ReadOnly = !state;
+            dataGridViewTextBoxColumn1.ReadOnly = !state;
         }
 
         private void TripsView_Load(object sender, System.EventArgs e)
@@ -24,36 +34,6 @@ namespace RailwayTrips.GUI
             trainColumn.DataSource = Railway.Instance.BindingTrains;
             trainColumn.DisplayMember = "TrainNumber";
             trainColumn.ValueMember = "TrainNumber";
-        }
-
-        private void tripsBindingSource_CurrentChanged(object sender, System.EventArgs e)
-        {
-            string id = ((Trip)tripsBindingSource.Current).PK;
-            if (Railway.Instance.ticketExist(id))
-            {
-                tripsBindingNavigator.DeleteItem.Enabled = false;
-                tripsDataGridView.AllowUserToDeleteRows = false;
-                dataGridViewTextBoxColumn1.ReadOnly = true;
-                trainColumn.ReadOnly = true;
-            }
-            else
-            {
-
-                tripsBindingNavigator.DeleteItem.Enabled = true;
-                tripsDataGridView.AllowUserToDeleteRows = true;
-                dataGridViewTextBoxColumn1.ReadOnly = false;
-                trainColumn.ReadOnly = false;
-            }
-        }
-
-        private void tripsBindingSource_AddingNew(object sender, System.ComponentModel.AddingNewEventArgs e)
-        {
-
-        }
-
-        private void TripsView_Enter(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

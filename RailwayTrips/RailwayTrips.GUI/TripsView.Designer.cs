@@ -230,8 +230,6 @@
             // tripsBindingSource
             // 
             this.tripsBindingSource.DataSource = typeof(RailwayTrips.Data.Trip);
-            this.tripsBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.tripsBindingSource_AddingNew);
-            this.tripsBindingSource.CurrentChanged += new System.EventHandler(this.tripsBindingSource_CurrentChanged);
             // 
             // TripsView
             // 
@@ -242,7 +240,6 @@
             this.Name = "TripsView";
             this.Size = new System.Drawing.Size(544, 330);
             this.Load += new System.EventHandler(this.TripsView_Load);
-            this.Enter += new System.EventHandler(this.TripsView_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.tripsBindingNavigator)).EndInit();
             this.tripsBindingNavigator.ResumeLayout(false);
             this.tripsBindingNavigator.PerformLayout();

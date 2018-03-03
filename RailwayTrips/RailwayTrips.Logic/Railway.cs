@@ -1,7 +1,6 @@
 ﻿using RailwayTrips.Data;
 using System;
-using System.Collections.Generic;
-using System.Windows.Forms; //
+using System.Windows.Forms;
 
 namespace RailwayTrips.Logic
 {
@@ -21,33 +20,10 @@ namespace RailwayTrips.Logic
             }
         }
 
-        // Таблицы данных предметной области 
+        // our tables
         readonly Trains trains = new Trains();
         readonly Trips trips = new Trips();
         readonly Tickets tickets = new Tickets();
-
-        public bool tripExist(int trainNumber)
-        {
-            return trips.Exists(p => p.TrainNumber == trainNumber);
-        }
-
-        public bool ticketExist(int trainNumber)
-        {
-            return tickets.Exists(p => p.TrainNumber == trainNumber);
-        }
-
-        public bool ticketExist(string fk)
-        {
-            return tickets.Exists(p => p.FK==fk);
-        }
-
-        public List<string> GetPKs()
-        {
-            List<string> list = new List<string>();
-            foreach (Trip trip in trips)
-                list.Add(trip.PK);
-            return list;
-        }
 
         // Ссылки на объекты привязки данных 
         private BindingSource bsTrains;
@@ -64,7 +40,7 @@ namespace RailwayTrips.Logic
                 value.DataSource = trains;
                 value.ListChanged += TrainsOrTripsListChanged;
                 value.ListChanged += TrainsListChanged;
-                //value.PositionChanged += TrainsPositionChanged;
+                value.PositionChanged += TrainsPositionChanged;
             }
         }
 
@@ -77,7 +53,7 @@ namespace RailwayTrips.Logic
                 value.DataSource = trips;
                 value.AddingNew += AddingNewTrip;
                 value.ListChanged += TrainsOrTripsListChanged;
-                //value.PositionChanged += TripsPositionChanged;
+                value.PositionChanged += TripsPositionChanged;
             }
         }
 
@@ -98,14 +74,22 @@ namespace RailwayTrips.Logic
         public event EnableRemoveEvent OnEnableTrainRemove;
         public event EnableRemoveEvent OnEnableTripRemove;
 
+        public delegate void EnableAddEvent(bool state);
+        public event EnableAddEvent OnEnableTripAdd;
+        public event EnableAddEvent OnEnableTicketAdd;
+
         private void TrainsPositionChanged(object sender, EventArgs e)
         {
             CheckTrainCascadeReference();
+            OnEnableTripAdd?.Invoke(trains.Count != 0);
+            OnEnableTicketAdd?.Invoke(trains.Count != 0 && trips.Count != 0);
         }
 
         private void TripsPositionChanged(object sender, EventArgs e)
         {
             CheckTripCascadeReference();
+            OnEnableTripAdd?.Invoke(trains.Count != 0);
+            OnEnableTicketAdd?.Invoke(trains.Count != 0 && trips.Count != 0);
         }
 
         void CheckTrainCascadeReference()
@@ -115,7 +99,7 @@ namespace RailwayTrips.Logic
 
             int id = (bsTrains.Current as Train).TrainNumber;
             bool state =
-                !trips.Exists(p => p.TrainNumber == id)||
+                !trips.Exists(p => p.TrainNumber == id)&&
                 !tickets.Exists(p => p.TrainNumber == id);
 
             OnEnableTrainRemove(state);
@@ -129,7 +113,6 @@ namespace RailwayTrips.Logic
             string id = (bsTrips.Current as Trip).PK;
             bool state =
                 !tickets.Exists(p => p.FK == id);
-                //!registry.Exists(p => p.idDisease == id);
 
             OnEnableTripRemove(state);
         }

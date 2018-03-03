@@ -100,8 +100,6 @@
             // ticketsBindingSource
             // 
             this.ticketsBindingSource.DataSource = typeof(RailwayTrips.Data.Ticket);
-            this.ticketsBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.ticketsBindingSource_AddingNew);
-            this.ticketsBindingSource.DataError += new System.Windows.Forms.BindingManagerDataErrorEventHandler(this.ticketsBindingSource_DataError);
             // 
             // bindingNavigatorCountItem
             // 
@@ -267,7 +265,6 @@
             this.Name = "TicketsView";
             this.Size = new System.Drawing.Size(400, 325);
             this.Load += new System.EventHandler(this.TicketsView_Load);
-            this.Enter += new System.EventHandler(this.TicketsView_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingNavigator)).EndInit();
             this.ticketsBindingNavigator.ResumeLayout(false);
             this.ticketsBindingNavigator.PerformLayout();

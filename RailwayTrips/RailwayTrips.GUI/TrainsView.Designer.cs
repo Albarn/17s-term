@@ -59,7 +59,6 @@
             // trainsBindingSource
             // 
             this.trainsBindingSource.DataSource = typeof(RailwayTrips.Data.Train);
-            this.trainsBindingSource.CurrentChanged += new System.EventHandler(this.trainsBindingSource_CurrentChanged);
             // 
             // trainsBindingNavigator
             // 

@@ -1,43 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace RailwayTrips.Data
 {
+    /// <summary>
+    /// ticket collection
+    /// </summary>
     public class Tickets : List<Ticket>
     {
         public Tickets() { }
     }
 
+    /// <summary>
+    /// railway ticket
+    /// </summary>
     public class Ticket
     {
+        /// <summary>
+        /// count of created objects(for primary key)
+        /// </summary>
         private static int Count = 0;
 
+        /// <summary>
+        /// primary key
+        /// </summary>
         [DisplayName("Номер билета")] public int TicketNumber { get; set; }
+
+        /// <summary>
+        /// part of foreign key
+        /// </summary>
         [DisplayName("Дата поездки")] public DateTime TripDate { get; set; }
+
+        /// <summary>
+        /// part of foreign key
+        /// </summary>
         [DisplayName("Номер поезда")] public int TrainNumber { get; set; }
+
+        /// <summary>
+        /// fk string contents trainNumber#tripDate
+        /// </summary>
         [DisplayName("FK Check")]
         public string FK
         {
             get
             {
-                return TrainNumber.ToString() + "#" + TripDate.ToString();
+                return TrainNumber.ToString() + "#" + TripDate.ToString("dd.MM.yy");
             }
             set
             {
-                string trainNumber = value.Substring(0, value.IndexOf('#'));
-                try
-                {
-                    TrainNumber = int.Parse(trainNumber);
-                }
-                catch { }
-
+                //if we got exception, we dont set values
+                string number = value.Substring(0, value.IndexOf('#'));
                 string date = value.Substring(value.IndexOf('#') + 1);
                 try
                 {
-                    TripDate = DateTime.Parse(date);
+                    //use additional vars for
+                    //safe setting
+                    //before exception appears
+                    //in number/date parsing
+                    //we dont set any of fields
+                    int trainNumber;
+                    DateTime tripDate;
+                    trainNumber = int.Parse(number);
+                    if (!DateTime.TryParseExact(date, "dd.MM.yy", null,
+                                   DateTimeStyles.None, out tripDate))
+                        throw new Exception();
+
+                    TrainNumber = trainNumber;
+                    TripDate = tripDate;
                 }
-                catch { }
+                catch {
+                    //we set both values or any
+                    return;
+                }
             }
         }
         [DisplayName("Фамилия")] public string LastName { get; set; }
@@ -61,11 +97,26 @@ namespace RailwayTrips.Data
                 }
             }
         }
-        [DisplayName("Цена")] public double Price { get; set; }
+
+        double price;
+
+        [DisplayName("Цена")] public double Price { get
+            {
+                return price;
+            }
+            set
+            {
+                if (value >= 0)
+                    price = value;
+            }
+        }
 
         public Ticket()
         {
+            //init pk with count
             TicketNumber = Count++;
+
+            //other fields with default values
             LastName = FirstName = MiddleName = "<Name>";
             CarriegeType = "К";
             Price = 1;

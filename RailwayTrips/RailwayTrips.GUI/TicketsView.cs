@@ -1,5 +1,4 @@
-﻿using RailwayTrips.Data;
-using RailwayTrips.Logic;
+﻿using RailwayTrips.Logic;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -12,33 +11,21 @@ namespace RailwayTrips.GUI
         {
             InitializeComponent();
             Railway.Instance.BindingTickets = ticketsBindingSource;
+            Railway.Instance.OnEnableTicketAdd += Instance_OnEnableTicketAdd;
+            Instance_OnEnableTicketAdd(false);
+        }
+
+        private void Instance_OnEnableTicketAdd(bool state)
+        {
+            bindingNavigatorAddNewItem.Enabled = state;
+            ticketsDataGridView.AllowUserToAddRows = state;
         }
 
         private void TicketsView_Load(object sender, EventArgs e)
         {
-            List<string> pks = Railway.Instance.GetPKs();
-            fkColumn.Items.Clear();
-            foreach (string pk in pks)
-                fkColumn.Items.Add(pk);
-        }
-
-        private void ticketsBindingSource_AddingNew(object sender, System.ComponentModel.AddingNewEventArgs e)
-        {
-            TicketsView_Load(sender, e);
-            //fkColumn.DataSource = Railway.Instance.GetPKs();
-        }
-
-        private void TicketsView_Enter(object sender, EventArgs e)
-        {
-            List<string> pks = Railway.Instance.GetPKs();
-            fkColumn.Items.Clear();
-            foreach (string pk in pks)
-                fkColumn.Items.Add(pk);
-        }
-
-        private void ticketsBindingSource_DataError(object sender, BindingManagerDataErrorEventArgs e)
-        {
-            
+            fkColumn.DataSource = Railway.Instance.BindingTrips;
+            fkColumn.DisplayMember = "PK";
+            fkColumn.ValueMember = "PK";
         }
 
         private void ticketsDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
