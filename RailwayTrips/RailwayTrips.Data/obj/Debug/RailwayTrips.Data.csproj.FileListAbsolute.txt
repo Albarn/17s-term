@@ -1,0 +1,6 @@
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\bin\Debug\RailwayTrips.Data.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\bin\Debug\RailwayTrips.Data.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\obj\Debug\RailwayTrips.Data.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\obj\Debug\RailwayTrips.Data.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\obj\Debug\RailwayTrips.Data.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Data\obj\Debug\RailwayTrips.Data.pdb

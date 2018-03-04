@@ -1,0 +1,10 @@
+G:\repos\17s-term\FS Monitor\WinFormApp\bin\Debug\WinFormApp.exe.config
+G:\repos\17s-term\FS Monitor\WinFormApp\bin\Debug\WinFormApp.exe
+G:\repos\17s-term\FS Monitor\WinFormApp\bin\Debug\WinFormApp.pdb
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.Form1.resources
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.Properties.Resources.resources
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.csproj.GenerateResource.Cache
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.exe
+G:\repos\17s-term\FS Monitor\WinFormApp\obj\Debug\WinFormApp.pdb

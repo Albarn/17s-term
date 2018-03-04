@@ -1,0 +1,16 @@
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Main.exe.config
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Main.exe
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Main.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.GUI.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Logic.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Data.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.GUI.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Logic.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\bin\Debug\RailwayTrips.Data.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.Form1.resources
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.Properties.Resources.resources
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.csproj.GenerateResource.Cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.exe
+G:\repos\17s-term\RailwayTrips\RailwayTrips.Main\obj\Debug\RailwayTrips.Main.pdb

@@ -1,0 +1,14 @@
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.GUI.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.GUI.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.Data.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.Data.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.csprojResolveAssemblyReference.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.Logic.dll
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\bin\Debug\RailwayTrips.Logic.pdb
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.TicketsView.resources
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.TrainsView.resources
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.TripsView.resources
+G:\repos\17s-term\RailwayTrips\RailwayTrips.GUI\obj\Debug\RailwayTrips.GUI.csproj.GenerateResource.Cache
