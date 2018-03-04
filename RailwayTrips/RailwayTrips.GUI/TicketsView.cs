@@ -1,6 +1,5 @@
 ﻿using RailwayTrips.Logic;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RailwayTrips.GUI
@@ -11,6 +10,8 @@ namespace RailwayTrips.GUI
         {
             InitializeComponent();
             Railway.Instance.BindingTickets = ticketsBindingSource;
+
+            //control adding
             Railway.Instance.OnEnableTicketAdd += Instance_OnEnableTicketAdd;
             Instance_OnEnableTicketAdd(false);
         }
@@ -23,6 +24,8 @@ namespace RailwayTrips.GUI
 
         private void TicketsView_Load(object sender, EventArgs e)
         {
+
+            //load fk from trips
             fkColumn.DataSource = Railway.Instance.BindingTrips;
             fkColumn.DisplayMember = "PK";
             fkColumn.ValueMember = "PK";
@@ -30,7 +33,7 @@ namespace RailwayTrips.GUI
 
         private void ticketsDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            e.Cancel = true;
+            //e.Cancel = true;
         }
     }
 }

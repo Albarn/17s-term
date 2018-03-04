@@ -107,7 +107,7 @@ namespace RailwayTrips.Data
             set
             {
                 if (value >= 0)
-                    price = value;
+                    price = ((int)(value*100))/100.0;
             }
         }
 

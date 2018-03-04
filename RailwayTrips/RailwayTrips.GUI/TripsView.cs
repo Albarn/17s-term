@@ -10,8 +10,13 @@ namespace RailwayTrips.GUI
         {
             InitializeComponent();
             Railway.Instance.BindingTrips = tripsBindingSource;
+
+            //control adding/removing
             Railway.Instance.OnEnableTripRemove += EnableRemoveTrip;
             Railway.Instance.OnEnableTripAdd += Instance_OnEnableTripAdd;
+
+            //on control load there is no trains in Railway
+            //so block add first
             Instance_OnEnableTripAdd(false);
         }
 
@@ -25,12 +30,16 @@ namespace RailwayTrips.GUI
         {
             bindingNavigatorDeleteItem.Enabled = state;
             tripsDataGridView.AllowUserToDeleteRows = state;
+
+            //cant edit pk if cascade ref exist
             trainColumn.ReadOnly = !state;
             dataGridViewTextBoxColumn1.ReadOnly = !state;
         }
 
         private void TripsView_Load(object sender, System.EventArgs e)
         {
+
+            //load fk from trains
             trainColumn.DataSource = Railway.Instance.BindingTrains;
             trainColumn.DisplayMember = "TrainNumber";
             trainColumn.ValueMember = "TrainNumber";
