@@ -1,13 +1,8 @@
-﻿using System;
+﻿using ClassLib;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-using ClassLib;
 
 namespace L1
 {
@@ -30,44 +25,17 @@ namespace L1
             //создание новых таблиц при изменении размера в поле
             n = (int)numericUpDown1.Value;
 
-            //чистим соержимое
-            aDataGridView.Rows.Clear();
-            aDataGridView.Columns.Clear();
-            cDataGridView.Rows.Clear();
-            cDataGridView.Columns.Clear();
-            xDataGridView.Rows.Clear();
-            xDataGridView.Columns.Clear();
-
-            //устанавливаем длину заголовка строк
-            //она должна быть больше
-            aDataGridView.RowHeadersWidth = 50;
-            cDataGridView.RowHeadersWidth = 50;
-            xDataGridView.RowHeadersWidth = 50;
-
-            cDataGridView.Columns.Add("c", "В");
-            xDataGridView.Columns.Add("c", "Х");
-            cDataGridView.Columns[0].Width = 40;
-            xDataGridView.Columns[0].Width = 40;
-            for (int i = 0; i < n; i++)
-            {
-                //добавляем колонки и подписываем их
-                aDataGridView.Columns.Add("a" + i, (i + 1).ToString());
-
-                //устанавливаем ширину по умолчанию
-                aDataGridView.Columns[i].Width = 40;
-
-                //добавляем и подписываем строки
-                aDataGridView.Rows.Add();
-                aDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                cDataGridView.Rows.Add();
-                cDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                xDataGridView.Rows.Add();
-                xDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
+            Lab1.BuildTable(aDataGridView, n, n);
+            Lab1.BuildVector(cDataGridView, n, "B");
+            Lab1.BuildVector(xDataGridView, n, "X");
         }
 
+        List<string> log=new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
+
+            log = new List<string>();
+            log.Add("решение системы первым способом");
             //чтение матрицы А из таблицы
             double[,] A = new double[n, n];
 
@@ -84,7 +52,8 @@ namespace L1
                     }
                 }
 
-            A = Lab1.InvertMatrix(A, n);
+            //обратная матрица
+            A = Lab1.InvertMatrix(A, n,log);
             if (A == null)
             {
                 MessageBox.Show("осевой элемент равен нулю\r\n" +
@@ -93,6 +62,7 @@ namespace L1
                 return;
             }
 
+            //вектор В
             double[,] B = new double[n, 1];
             for (int i = 0; i < n; i++)
             {
@@ -106,14 +76,27 @@ namespace L1
                 }
             }
 
-            double[,] X = Lab1.MultiplyMatrixes(A, B, n, n, 1);
+            //получаем результат перемножением обратной матрицы и вектора В
+            double[,] X = Lab1.MultiplyMatrixes(A, B, n, n, 1,log);
             for (int i = 0; i < n; i++)
                 xDataGridView[0, i].Value = X[i, 0];
         }
 
+        //запись лога в файл
         private void button2_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.ShowDialog();
+            StreamWriter writer = new StreamWriter(
+                new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate));
+            try
+            {
+                foreach (string line in log)
+                    writer.WriteLine(line);
+            }
+            finally
+            {
+                writer.Close();
+            }
         }
     }
 }

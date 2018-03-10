@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClassLib;
+using System;
 using System.Windows.Forms;
-using ClassLib;
 
 namespace L1
 {
@@ -30,32 +23,8 @@ namespace L1
             //создание новых таблиц при изменении размера в поле
             n = (int)numericUpDown1.Value;
 
-            //чистим соержимое
-            aDataGridView.Rows.Clear();
-            aDataGridView.Columns.Clear();
-            cDataGridView.Rows.Clear();
-            cDataGridView.Columns.Clear();
-
-            //устанавливаем длину заголовка строк
-            //она должна быть больше
-            aDataGridView.RowHeadersWidth = 50;
-            cDataGridView.RowHeadersWidth = 50;
-            for (int i = 0; i < n; i++)
-            {
-                //добавляем колонки и подписываем их
-                aDataGridView.Columns.Add("a" + i, (i + 1).ToString());
-                cDataGridView.Columns.Add("c" + i, (i + 1).ToString());
-
-                //устанавливаем ширину по умолчанию
-                aDataGridView.Columns[i].Width = 40;
-                cDataGridView.Columns[i].Width = 40;
-
-                //добавляем и подписываем строки
-                aDataGridView.Rows.Add();
-                aDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                cDataGridView.Rows.Add();
-                cDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
+            Lab1.BuildTable(aDataGridView, n, n);
+            Lab1.BuildTable(cDataGridView, n, n);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,6 +45,7 @@ namespace L1
                     }
                 }
 
+            //обращаем матрицу и выводим ее на форму
             A = Lab1.InvertMatrix(A, n);
             if(A==null)
             {

@@ -34,20 +34,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.aDataGridView = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.aDataGridView = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.cDataGridView = new System.Windows.Forms.DataGridView();
             this.xDataGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.aDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -133,24 +134,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "размер n:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "матрица А, вектор В, решение Х:";
-            // 
-            // aDataGridView
-            // 
-            this.aDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.aDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.aDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.aDataGridView.Name = "aDataGridView";
-            this.aDataGridView.Size = new System.Drawing.Size(215, 148);
-            this.aDataGridView.TabIndex = 3;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,6 +150,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(393, 148);
             this.splitContainer1.SplitterDistance = 215;
             this.splitContainer1.TabIndex = 7;
+            // 
+            // aDataGridView
+            // 
+            this.aDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.aDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.aDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.aDataGridView.Name = "aDataGridView";
+            this.aDataGridView.Size = new System.Drawing.Size(215, 148);
+            this.aDataGridView.TabIndex = 3;
             // 
             // splitContainer2
             // 
@@ -203,24 +195,38 @@
             this.xDataGridView.Size = new System.Drawing.Size(83, 148);
             this.xDataGridView.TabIndex = 7;
             // 
-            // T3Form
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(174, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "матрица А, вектор В, решение Х:";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.CheckFileExists = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // T4Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 234);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "T3Form";
-            this.Text = "СЛАУ способ 1";
+            this.Name = "T4Form";
+            this.Text = "СЛАУ способ 2";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aDataGridView)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.aDataGridView)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -245,5 +251,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView cDataGridView;
         private System.Windows.Forms.DataGridView xDataGridView;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

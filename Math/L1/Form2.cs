@@ -1,13 +1,8 @@
-﻿using System;
+﻿using ClassLib;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-using ClassLib;
 
 namespace L1
 {
@@ -31,49 +26,22 @@ namespace L1
             //создание новых таблиц при изменении размера в поле
             n = (int)numericUpDown1.Value;
 
-            //чистим соержимое
-            aDataGridView.Rows.Clear();
-            aDataGridView.Columns.Clear();
-            cDataGridView.Rows.Clear();
-            cDataGridView.Columns.Clear();
-            xDataGridView.Rows.Clear();
-            xDataGridView.Columns.Clear();
-
-            //устанавливаем длину заголовка строк
-            //она должна быть больше
-            aDataGridView.RowHeadersWidth = 50;
-            cDataGridView.RowHeadersWidth = 50;
-            xDataGridView.RowHeadersWidth = 50;
-
-            cDataGridView.Columns.Add("c", "В");
-            xDataGridView.Columns.Add("c", "Х");
-            cDataGridView.Columns[0].Width = 40;
-            xDataGridView.Columns[0].Width = 40;
-            for (int i = 0; i < n; i++)
-            {
-                //добавляем колонки и подписываем их
-                aDataGridView.Columns.Add("a" + i, (i + 1).ToString());
-
-                //устанавливаем ширину по умолчанию
-                aDataGridView.Columns[i].Width = 40;
-
-                //добавляем и подписываем строки
-                aDataGridView.Rows.Add();
-                aDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                cDataGridView.Rows.Add();
-                cDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                xDataGridView.Rows.Add();
-                xDataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
+            Lab1.BuildTable(aDataGridView, n, n);
+            Lab1.BuildVector(cDataGridView, n, "B");
+            Lab1.BuildVector(xDataGridView, n, "X");
         }
 
+        List<string> log = new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
+            log = new List<string>();
+            log.Add("решение системы третьим способом");
             //чтение матрицы А из таблицы
             double[,] A = new double[n, n + 1];
 
             //перебираем все ячейки
             for (int i = 0; i < n; i++)
+            {
                 for (int j = 0; j < n; j++)
                 {
                     //если ячейка не заполнена, присваиваем ноль
@@ -84,6 +52,7 @@ namespace L1
                         double.TryParse(aDataGridView[j, i].Value.ToString(), out A[i, j]);
                     }
                 }
+            }
             for (int i = 0; i < n; i++)
             {
                 //если ячейка не заполнена, присваиваем ноль
@@ -95,6 +64,18 @@ namespace L1
                 }
             }
 
+            //запись исходной системы в лог
+            for(int i=0;i<n;i++)
+            {
+                log.Add("");
+                for(int j = 0; j < n + 1; j++)
+                {
+                    log[log.Count - 1] += A[i, j].ToString("F2") + "\t";
+                }
+            }
+
+            //решение третьим способом
+            List<List<double>> list = new List<List<double>>();
             for (int i = 0; i < n; i++)
             {
                 if (A[0, 0] == 0)
@@ -104,20 +85,79 @@ namespace L1
                     "заполните главную диагональ");
                     return;
                 }
-                double ars = A[0, 0];
-                for (int j = 0; j < n + 1; j++)
-                    ;
-                Lab1.AxialStep(A, n, n + 1, i, i);
+
+                //делаем осевой шаг
+                Lab1.AxialStep(A, n - i, n + 1 - i, 0, 0,log);
+
+                //запоминаем зависимость
+                List<double> li = new List<double>();
+                for (int j = 1; j < n + 1-i; j++)
+                    li.Add(-A[0,j]);
+
+                //добавляем зависимость в список
+                list.Add(li);
+
+                //обрезаем матрицу
+                A = Lab1.CutMatrix(A, n - i, n + 1 - i, 0, 0);
                 
             }
 
+            //выводим зависимости в лог
+            log.Add("зависимости:");
+            for(int i = 0; i < list.Count; i++)
+            {
+                //имя переменной
+                log.Add("x" + (list.Count - i) + ":");
+
+                //правая часть выражения
+                log[log.Count - 1] += list[i][list[i].Count - 1];
+                //минус левая
+                for(int j = 0; j<list[i].Count-1; j++)
+                {
+
+                    log[log.Count - 1] +=
+                        //имя переменной
+                        " - x" + (list[i].Count-j-1) +
+                        //коэффициент
+                        " * "+ list[i][j].ToString("F2");
+                }
+            }
+
+            //вычисление и запись ответа в лог
+            log.Add("ответ:");
+            double[] X = new double[n];
+            for (int i = n - 1; i >= 0; i--)
+            {
+                //значение из правой части выражения
+                X[i] = list[i][list[i].Count - 1];
+                for (int j = n - 1, k=list[i].Count-2; j > i&&k>=0; j--,k--)
+                {
+                    //отнимаем произведение коэффициента и значения х
+                    X[i] -= X[j] * list[i][k];
+                }
+                log.Add(X[i].ToString("F2"));
+            }
+
+            //вывод р-та на форму
             for (int i = 0; i < n; i++)
-                xDataGridView[0, i].Value = -A[i, n];
+                xDataGridView[0, i].Value = X[i];
         }
 
+        //запись лога в файл
         private void button2_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.ShowDialog();
+            StreamWriter writer = new StreamWriter(
+                new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate));
+            try
+            {
+                foreach (string line in log)
+                    writer.WriteLine(line);
+            }
+            finally
+            {
+                writer.Close();
+            }
         }
     }
 }

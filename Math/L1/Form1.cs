@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace L1
@@ -19,6 +12,9 @@ namespace L1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            //вызов нужной формы в зависимости от 
+            //выбраной задачи
             Form taskForm = null;
             if (radioButton1.Checked)
                 taskForm=new T1Form();
@@ -30,6 +26,8 @@ namespace L1
                 taskForm = new T4Form();
             if (radioButton5.Checked)
                 taskForm = new T5Form();
+
+            //подписка на закрытие побочной формы
             if (taskForm != null)
             {
                 taskForm.FormClosed += TaskForm_FormClosed;
@@ -38,6 +36,7 @@ namespace L1
             }
         }
 
+        //при закрытии формы решения, открываем главную форму
         private void TaskForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Show();

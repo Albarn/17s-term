@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClassLib;
+using System;
 using System.Windows.Forms;
-using ClassLib;
 
 namespace L1
 {
@@ -32,29 +25,7 @@ namespace L1
             n = (int)numericUpDown1.Value;
             m = (int)numericUpDown2.Value;
 
-            //чистим соержимое
-            aDataGridView.Rows.Clear();
-            aDataGridView.Columns.Clear();
-
-            //устанавливаем длину заголовка строк
-            //она должна быть больше
-            aDataGridView.RowHeadersWidth = 50;
-            for (int i = 0; i < m; i++)
-            {
-                //добавляем колонки и подписываем их
-                aDataGridView.Columns.Add("a" + i, (i + 1).ToString());
-
-                //устанавливаем ширину по умолчанию
-                aDataGridView.Columns[i].Width = 40;
-
-            }
-            for(int j = 0; j < n; j++)
-            {
-
-                //добавляем и подписываем строки
-                aDataGridView.Rows.Add();
-                aDataGridView.Rows[j].HeaderCell.Value = (j + 1).ToString();
-            }
+            Lab1.BuildTable(aDataGridView, n, m);
         }
 
         private void button1_Click(object sender, EventArgs e)

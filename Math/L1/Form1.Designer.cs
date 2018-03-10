@@ -30,10 +30,10 @@
         {
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,25 +64,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "решение задачи:";
             // 
-            // radioButton2
+            // radioButton5
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(135, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "поиск ранга матрицы";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 67);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(153, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.Text = "решение СЛАУ(способ 1)";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(6, 113);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(153, 17);
+            this.radioButton5.TabIndex = 5;
+            this.radioButton5.Text = "решение СЛАУ(способ 3)";
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
@@ -94,15 +84,25 @@
             this.radioButton4.Text = "решение СЛАУ(способ 2)";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // radioButton3
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(6, 113);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(153, 17);
-            this.radioButton5.TabIndex = 5;
-            this.radioButton5.Text = "решение СЛАУ(способ 2)";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 67);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(153, 17);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.Text = "решение СЛАУ(способ 1)";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(6, 42);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(135, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.Text = "поиск ранга матрицы";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
