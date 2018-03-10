@@ -85,18 +85,7 @@ namespace L1
         //запись лога в файл
         private void button2_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            StreamWriter writer = new StreamWriter(
-                new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate));
-            try
-            {
-                foreach (string line in log)
-                    writer.WriteLine(line);
-            }
-            finally
-            {
-                writer.Close();
-            }
+            Lab1.SaveLog(log);
         }
     }
 }

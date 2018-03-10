@@ -1,10 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ClassLib
 {
     public class Lab1
     {
+        public static void SaveLog(List<string> log)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.CheckFileExists = false;
+            openFileDialog1.ShowDialog();
+            StreamWriter writer = new StreamWriter(
+                new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate));
+            try
+            {
+                foreach (string line in log)
+                    writer.WriteLine(line);
+            }
+            finally
+            {
+                writer.Close();
+            }
+        }
+
         /// <summary>
         /// копирование матриц
         /// </summary>

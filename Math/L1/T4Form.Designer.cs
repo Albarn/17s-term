@@ -40,7 +40,6 @@
             this.cDataGridView = new System.Windows.Forms.DataGridView();
             this.xDataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -204,11 +203,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "матрица А, вектор В, решение Х:";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.CheckFileExists = false;
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // T4Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,6 +245,5 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView cDataGridView;
         private System.Windows.Forms.DataGridView xDataGridView;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
