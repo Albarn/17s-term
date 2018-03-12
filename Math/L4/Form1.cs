@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace L2
+namespace L4
 {
     public partial class Form1 : Form
     {
@@ -35,19 +35,22 @@ namespace L2
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             double[,] a = null;
-
+            List<char> list = new List<char>();
             //заполнение по лекционному примеру
             if (radioButton1.Checked)
             {
                 a = new double[,]
                 {
-                    {1,0,-3,2,-1,-3 },
-                    {-1,1,0,-1,-1,-3},
-                    {1,3,-1,-1,1,2 },
-                    {1,-1,0,0,-1,0 }
+                    {1,-2,1,-2,-1,-6 },
+                    {-1,-4,-3,-2,-1,-9},
+                    {-1,-2,0,-2,1,-2 },
+                    {2,2,1,1,1,0 }
                 };
-                radioButton3.Checked = radioButton4.Checked = 
-                    radioButton5.Checked = radioButton6.Checked = false;
+                list = new List<char>(
+                    new char[]
+                    {
+                        '0','0','0'
+                    });
             }
 
             //заполнение по варианту из постановки задачи
@@ -55,54 +58,24 @@ namespace L2
             {
                 a = new double[,]
                 {
-                    {-1,-4,-3,-2,-1,-9 },
-                    {1,-2,1,-2,-1,-6},
-                    {-1,-2,0,-2,1,-2 },
-                    {1,-4,5,-9,-2,0 }
+                    {-1,-4,-3,-2,-1,9 },
+                    {1,-2,1,-2,-1,6},
+                    {-1,-2,0,-2,1,2 },
+                    {1,-4,5,9,-2,0 }
                 };
+                list = new List<char>(
+                    new char[]
+                    {
+                        '0','y','y'
+                    });
             }
 
             //запись в таблицу
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < m; j++)
                     dataGridView1[j, i].Value = a[i, j].ToString();
-        }
-
-        //отрицание неравенства по выбору пользователя
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            radioButton1.Checked = false;
-            radioButton2.Checked = true;
-
-            //исходная таблица по варианту 24
-            double[,] a = new double[,]
-                {
-                    {-1,-4,-3,-2,-1,-9 },
-                    {1,-2,1,-2,-1,-6},
-                    {-1,-2,0,-2,1,-2 },
-                    {1,-4,5,-9,-2,0 }
-                };
-
-            //если выбрано отрицание
-            if (!radioButton6.Checked)
-            {
-                //выбираем строку
-                int p;
-                if (radioButton5.Checked)
-                    p = 2;
-                else if (radioButton4.Checked)
-                    p = 1;
-                else
-                    p = 0;
-                //и берем ее по знаку
-                for (int j = 0; j < m; j++)
-                    a[p, j] *= -1;
-            }
-
-            //запись изменений в таблицу
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < m; j++)
-                    dataGridView1[j, i].Value = a[i, j].ToString();
+            for (int i = 0; i < n - 1; i++)
+                dataGridView1[m, i].Value = list[i].ToString();
         }
 
         //поиск решения
@@ -132,30 +105,30 @@ namespace L2
                 {
                     "x1","x2","x3","x4","x5"
                 });
-            List<string> ys = new List<string>(
-                new string[]
-                {
-                    "y1","y2","y3"
-                });
-            try
-            {
-                Lab2.FindBasicSolution(a, n, m, xs, ys, log);
-                Lab2.FindOptimalSolution(a, n, m, xs, ys, log);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                resLabel.Text = "";
-                return;
-            }
+            List<string> ys = new List<string>();
+            for (int i = 0; i < n - 1; i++)
+                ys.Add(dataGridView1[m, i].Value.ToString());
+            int localN = n, localM = m;
+            //try
+            //{
+                Lab3.RemoveZeroRows(ref a,ref localN,ref localM, xs, ys, log);
+                Lab2.FindBasicSolution(a, localN, localM, xs, ys, log);
+                Lab2.FindOptimalSolution(a, localN, localM, xs, ys, log);
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    resLabel.Text = "";
+            //    return;
+            //}
 
             //выводим максимум
             //и коэффициенты при х
-            resLabel.Text = $"z = {a[n - 1, m - 1]}";
+            resLabel.Text = $"z = {a[localN - 1, localM - 1]}";
             for(int i=0;i<ys.Count;i++)
             {
                 if (ys[i][0] == 'x')
-                    resLabel.Text += $"\n{ys[i]}:{a[i, m - 1]}";
+                    resLabel.Text += $"\n{ys[i]}:{a[i, localM - 1]}";
             }
         }
     }

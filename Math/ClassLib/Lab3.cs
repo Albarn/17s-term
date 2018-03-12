@@ -42,6 +42,7 @@ namespace ClassLib
                     break;
                 }
 
+            int zeroRow = r;
             if(r==-1)
             {
                 log.Add("ноль строк нет");
@@ -49,7 +50,7 @@ namespace ClassLib
             }
 
             int s = -1;
-            for(int j = 0; j < m - 1; j++)
+            for(int j = 0; j < m-1; j++)
             {
                 if (a[r, j] > 0)
                 {
@@ -94,9 +95,12 @@ namespace ClassLib
                 Lab2.WriteSystemInLog(a, n, m, xs, ys, log);
             }
 
-            a = RemoveColumn(a, n, m, s);
-            xs.RemoveAt(s);
-            m--;
+            if (r == zeroRow||true)
+            {
+                a = RemoveColumn(a, n, m, s);
+                xs.RemoveAt(s);
+                m--;
+            }
             RemoveZeroRows(ref a,ref n,ref m, xs, ys, log);
         }
     }

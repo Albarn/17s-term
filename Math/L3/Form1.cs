@@ -60,11 +60,16 @@ namespace L3
             {
                 a = new double[,]
                 {
-                    {1,4,3,2,1,9 },
-                    {-1,2,-1,2,1,6},
-                    {1,2,0,2,-1,2 },
-                    {1,-4,5,-9,-2,0 }
+                    {-1,-4,-3,-2,-1,9 },
+                    {1,-2,1,-2,-1,6},
+                    {-1,-2,0,-2,1,2 },
+                    {1,-4,5,9,-2,0 }
                 };
+                list = new List<char>(
+                    new char[]
+                    {
+                        '0','y','y'
+                    });
             }
 
             //запись в таблицу
@@ -81,13 +86,18 @@ namespace L3
             radioButton1.Checked = false;
             radioButton2.Checked = true;
 
+            List<char> list = new List<char>(
+                    new char[]
+                    {
+                        '0','y','y'
+                    });
             //исходная таблица по варианту 24
             double[,] a = new double[,]
                 {
-                    {1,4,3,2,1,9 },
-                    {-1,2,-1,2,1,6},
-                    {1,2,0,2,-1,2 },
-                    {1,-4,5,-9,-2,0 }
+                    {-1,-4,-3,-2,-1,9 },
+                    {1,-2,1,-2,-1,6},
+                    {-1,-2,0,-2,1,2 },
+                    {1,-4,5,9,-2,0 }
                 };
 
             //если выбрано отрицание
@@ -110,6 +120,8 @@ namespace L3
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < m; j++)
                     dataGridView1[j, i].Value = a[i, j].ToString();
+            for (int i = 0; i < n - 1; i++)
+                dataGridView1[m, i].Value = list[i].ToString();
         }
 
         //поиск решения
@@ -143,18 +155,18 @@ namespace L3
             for (int i = 0; i < n - 1; i++)
                 ys.Add(dataGridView1[m, i].Value.ToString());
             int localN = n, localM = m;
-            try
-            {
+            //try
+            //{
                 Lab3.RemoveZeroRows(ref a,ref localN,ref localM, xs, ys, log);
                 Lab2.FindBasicSolution(a, localN, localM, xs, ys, log);
                 Lab2.FindOptimalSolution(a, localN, localM, xs, ys, log);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                resLabel.Text = "";
-                return;
-            }
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    resLabel.Text = "";
+            //    return;
+            //}
 
             //выводим максимум
             //и коэффициенты при х

@@ -95,7 +95,7 @@ namespace ClassLib
             {
                 //заголовок с шапкой xs
                 log.Add($"процедура МЖИ[{r},{s}]:");
-                WriteSystemInLog(a, n, m, xs, ys, log);
+                //WriteSystemInLog(a, n, m, xs, ys, log);
             }
 
             //пробуем еще раз
@@ -174,7 +174,7 @@ namespace ClassLib
             if (log != null)
             {
                 log.Add($"процедура МЖИ[{r},{s}]:");
-                WriteSystemInLog(a, n, m, xs, ys, log);
+                //WriteSystemInLog(a, n, m, xs, ys, log);
             }
             FindBasicSolution(a, n, m,xs,ys, log);
         }

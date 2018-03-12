@@ -12,7 +12,7 @@ namespace ClassLib
             openFileDialog1.CheckFileExists = false;
             openFileDialog1.ShowDialog();
             StreamWriter writer = new StreamWriter(
-                new FileStream(openFileDialog1.FileName, FileMode.OpenOrCreate));
+                new FileStream(openFileDialog1.FileName, FileMode.Create));
             try
             {
                 foreach (string line in log)
