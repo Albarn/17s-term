@@ -41,9 +41,9 @@ namespace L2
             {
                 a = new double[,]
                 {
-                    {1,0,-3,2,-1,-3 },
-                    {-1,1,0,-1,-1,-3},
-                    {1,3,-1,-1,1,2 },
+                    {1,0,-3,2,-1,3 },
+                    {-1,1,0,-1,-1,3},
+                    {1,3,-1,-1,1,-2 },
                     {1,-1,0,0,-1,0 }
                 };
                 radioButton3.Checked = radioButton4.Checked = 
@@ -55,9 +55,9 @@ namespace L2
             {
                 a = new double[,]
                 {
-                    {-1,-4,-3,-2,-1,-9 },
-                    {1,-2,1,-2,-1,-6},
-                    {-1,-2,0,-2,1,-2 },
+                    {-1,-4,-3,-2,-1,9 },
+                    {1,-2,1,-2,-1,6},
+                    {-1,-2,0,-2,1,2 },
                     {1,-4,5,-9,-2,0 }
                 };
             }
@@ -77,9 +77,9 @@ namespace L2
             //исходная таблица по варианту 24
             double[,] a = new double[,]
                 {
-                    {-1,-4,-3,-2,-1,-9 },
-                    {1,-2,1,-2,-1,-6},
-                    {-1,-2,0,-2,1,-2 },
+                    {-1,-4,-3,-2,-1,9 },
+                    {1,-2,1,-2,-1,6},
+                    {-1,-2,0,-2,1,2 },
                     {1,-4,5,-9,-2,0 }
                 };
 
@@ -122,7 +122,8 @@ namespace L2
                     {
                         double.TryParse(
                             dataGridView1[j, i].Value.ToString(), out a[i, j]);
-                        a[i, j] *= -1;
+                        if (j != m - 1)
+                            a[i, j] *= -1;
                     }
                 }
 
@@ -130,7 +131,7 @@ namespace L2
             List<string> xs = new List<string>(
                 new string[]
                 {
-                    "x1","x2","x3","x4","x5"
+                    "-x1","-x2","-x3","-x4","-x5"
                 });
             List<string> ys = new List<string>(
                 new string[]
@@ -154,7 +155,7 @@ namespace L2
             resLabel.Text = $"z = {a[n - 1, m - 1]}";
             for(int i=0;i<ys.Count;i++)
             {
-                if (ys[i][0] == 'x')
+                if (ys[i][0] == '-')
                     resLabel.Text += $"\n{ys[i]}:{a[i, m - 1]}";
             }
         }

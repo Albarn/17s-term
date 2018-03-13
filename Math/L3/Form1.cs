@@ -41,9 +41,9 @@ namespace L3
             {
                 a = new double[,]
                 {
-                    {1,-2,1,-2,-1,-6 },
-                    {-1,-4,-3,-2,-1,-9},
-                    {-1,-2,0,-2,1,-2 },
+                    {1,-2,1,-2,-1,6 },
+                    {-1,-4,-3,-2,-1,9},
+                    {-1,-2,0,-2,1,2 },
                     {2,2,1,1,1,0 }
                 };
                 list = new List<char>(
@@ -141,7 +141,8 @@ namespace L3
                     {
                         double.TryParse(
                             dataGridView1[j, i].Value.ToString(), out a[i, j]);
-                        a[i, j] *= -1;
+                        if (j != m - 1)
+                            a[i, j] *= -1;
                     }
                 }
 
@@ -149,32 +150,32 @@ namespace L3
             List<string> xs = new List<string>(
                 new string[]
                 {
-                    "x1","x2","x3","x4","x5"
+                    "-x1","-x2","-x3","-x4","-x5"
                 });
             List<string> ys = new List<string>();
             for (int i = 0; i < n - 1; i++)
                 ys.Add(dataGridView1[m, i].Value.ToString());
             int localN = n, localM = m;
-            //try
-            //{
-                Lab3.RemoveZeroRows(ref a,ref localN,ref localM, xs, ys, log);
+            try
+            {
+                Lab3.RemoveZeroRows(ref a, ref localN, ref localM, xs, ys, log);
                 Lab2.FindBasicSolution(a, localN, localM, xs, ys, log);
                 Lab2.FindOptimalSolution(a, localN, localM, xs, ys, log);
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //    resLabel.Text = "";
-            //    return;
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                resLabel.Text = "";
+                return;
+            }
 
             //выводим максимум
             //и коэффициенты при х
-            resLabel.Text = $"z = {a[localN - 1, localM - 1]}";
+            resLabel.Text = $"z = {a[localN - 1, localM - 1].ToString("F2")}";
             for(int i=0;i<ys.Count;i++)
             {
-                if (ys[i][0] == 'x')
-                    resLabel.Text += $"\n{ys[i]}:{a[i, localM - 1]}";
+                if (ys[i][0] == '-')
+                    resLabel.Text += $"\n{ys[i]}:{a[i, localM - 1].ToString("F2")}";
             }
         }
     }

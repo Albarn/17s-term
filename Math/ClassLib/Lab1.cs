@@ -11,6 +11,8 @@ namespace ClassLib
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.CheckFileExists = false;
             openFileDialog1.ShowDialog();
+            if(File.Exists(openFileDialog1.FileName))
+                File.Delete(openFileDialog1.FileName);
             StreamWriter writer = new StreamWriter(
                 new FileStream(openFileDialog1.FileName, FileMode.Create));
             try
