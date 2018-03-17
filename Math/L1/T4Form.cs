@@ -59,6 +59,7 @@ namespace L1
                 else
                 {
                     double.TryParse(cDataGridView[0, i].Value.ToString(), out A[i, n]);
+                    A[i, n] *= -1;
                 }
             }
 
@@ -87,7 +88,7 @@ namespace L1
             
             //вывод р-та
             for (int i = 0; i < n; i++)
-                xDataGridView[0, i].Value = -A[i, n];
+                xDataGridView[0, i].Value = A[i, n];
         }
 
         //запись лога в файл

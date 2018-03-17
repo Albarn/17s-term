@@ -34,7 +34,7 @@ namespace L1
         List<string> log = new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
-            log = new List<string>();
+            log.Clear();
             log.Add("решение системы третьим способом");
             //чтение матрицы А из таблицы
             double[,] A = new double[n, n + 1];
@@ -61,6 +61,7 @@ namespace L1
                 else
                 {
                     double.TryParse(cDataGridView[0, i].Value.ToString(), out A[i, n]);
+                    A[i, n] *= -1;
                 }
             }
 
@@ -92,7 +93,7 @@ namespace L1
                 //запоминаем зависимость
                 List<double> li = new List<double>();
                 for (int j = 1; j < n + 1-i; j++)
-                    li.Add(-A[0,j]);
+                    li.Add(A[0,j]);
 
                 //добавляем зависимость в список
                 list.Add(li);
@@ -117,7 +118,7 @@ namespace L1
 
                     log[log.Count - 1] +=
                         //имя переменной
-                        " - x" + (list[i].Count-j-1) +
+                        " + x" + (list[i].Count-j-1) +
                         //коэффициент
                         " * "+ list[i][j].ToString("F2");
                 }
@@ -133,7 +134,7 @@ namespace L1
                 for (int j = n - 1, k=list[i].Count-2; j > i&&k>=0; j--,k--)
                 {
                     //отнимаем произведение коэффициента и значения х
-                    X[i] -= X[j] * list[i][k];
+                    X[i] += X[j] * list[i][k];
                 }
                 log.Add(X[i].ToString("F2"));
             }

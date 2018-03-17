@@ -95,7 +95,7 @@ namespace ClassLib
                 Lab2.WriteSystemInLog(a, n, m, xs, ys, log);
             }
 
-            if (r == zeroRow||true)
+            if (r == zeroRow)
             {
                 a = RemoveColumn(a, n, m, s);
                 xs.RemoveAt(s);

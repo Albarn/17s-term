@@ -108,6 +108,7 @@ namespace L2
         //поиск решения
         private void findSolutionButton_Click(object sender, EventArgs e)
         {
+            log.Clear();
             //чтение системы из таблицы
             double[,] a = new double[n, m];
             for(int i=0;i<n;i++)
