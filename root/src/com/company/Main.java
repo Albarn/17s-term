@@ -5,8 +5,24 @@ public class Main {
 
     //find max elements in matrix rows
     //returns array row index - max element
-    public  static double[][] FindMaxesInRows(double[][] matrix,int n,int m) {
+    public  static double[][]
+    FindMaxesInRows(double[][] matrix,int n,int m)
+    throws HighRangeException, NegativeRangeException{
         double res[][] = new double[n][2];
+        if(n<0)throw  new NegativeRangeException("row");
+        else if(m<0) throw  new NegativeRangeException("column");
+        try {
+            double a=matrix[n-1][0];
+        }
+        catch(Exception ex) {
+            throw new HighRangeException("column");
+        }
+        try {
+            double a=matrix[0][m-1];
+        }
+        catch(Exception ex) {
+            throw new HighRangeException("row");
+        }
         for (int i = 0; i < n; i++) {
             int max = 0;
             for (int j = 0; j < m; j++) {
@@ -20,7 +36,20 @@ public class Main {
     }
 
     //sorting matrix by second column
-    public  static  double[][] BubbleSort(double[][] matrix, int n){
+    public  static  double[][] BubbleSort(double[][] matrix, int n)
+    throws HighRangeException{
+        try {
+            double a=matrix[n-1][0];
+        }
+        catch (Exception ex){
+            throw new HighRangeException("row");
+        }
+        try {
+            double a=matrix[0][1];
+        }
+        catch (Exception ex){
+            throw new HighRangeException("column");
+        }
         for(int i=0; i < n; i++) 			// i - out cycle
         {
             for(int j = n-1; j > i; j-- ) 	// inner cycle
@@ -56,26 +85,34 @@ public class Main {
                 //if user write non digit
                 //or negative number
                 //we print exception message and try to read it again
-                n = in.nextInt();
+                try {
+                    n = in.nextInt();
+                }catch (Exception ex){
+                    throw new NonIntegerRangeException("row");
+                }
                 if (n >= 0)
                     break;
                 else
-                    System.out.print("\nnot a non negative number\ntry again");
+                    throw new NegativeRangeException("row");
             } catch (Exception ex) {
-                System.out.print("\nnot an int\ntry again");
+                System.out.print(ex.getMessage());
                 in = new Scanner(System.in);
             }
         }
         while(true){
             try{
                 //reading m, same as n
-                m=in.nextInt();
-                if (n >= 0)
+                try {
+                    m = in.nextInt();
+                }catch (Exception ex){
+                    throw new NonIntegerRangeException("column");
+                }
+                if (m >= 0)
                     break;
                 else
-                    System.out.print("\nnot a non negative number\ntry again");
+                    throw new NegativeRangeException("column");
             }catch (Exception ex){
-                System.out.print("\nnot an int\ntry again");
+                System.out.print(ex.getMessage());
                 in = new Scanner(System.in);
             }
         }
@@ -92,10 +129,14 @@ public class Main {
                     //if user write something wrong(like non digit)
                     //we print exception message and try to read it again
                     try{
+                        try{
                         nums[i][j]=in.nextDouble();
+                        }catch (Exception ex){
+                            throw new NotRealExeption();
+                        }
                         break;
                     }catch (Exception ex){
-                        System.out.print("\nnot a double\ntry again");
+                        System.out.print(ex.getMessage());
                         in = new Scanner(System.in);
                     }
                 }
@@ -105,10 +146,26 @@ public class Main {
         //max elements in nums rows
         //it will be sorting by max elements
         //matrix contents row number and max element
-        double maxElements[][]=FindMaxesInRows(nums,n,m);
+        double maxElements[][]=null;
+        try{
+            maxElements=FindMaxesInRows(nums,n,m);
+        }
+        catch (Exception ex){
+            System.out.print(ex.getMessage());
+            return;
+        }
 
-        //bubble sort maxElements
-        maxElements=BubbleSort(maxElements,n);
+        try {
+
+            //bubble sort maxElements
+            maxElements=BubbleSort(maxElements,n);
+        }
+        catch (Exception ex)
+        {
+
+            System.out.print(ex.getMessage());
+            return;
+        }
 
         //new line for result
         System.out.print("\n");

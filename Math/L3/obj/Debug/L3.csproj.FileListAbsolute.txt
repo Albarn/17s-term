@@ -1,0 +1,12 @@
+G:\repos\17s-term\Math\L3\obj\Debug\L3.Properties.Resources.resources
+G:\repos\17s-term\Math\L3\obj\Debug\L3.csproj.GenerateResource.Cache
+G:\repos\17s-term\Math\L3\obj\Debug\L3.csproj.CoreCompileInputs.cache
+G:\repos\17s-term\Math\L3\bin\Debug\L3.exe.config
+G:\repos\17s-term\Math\L3\bin\Debug\L3.exe
+G:\repos\17s-term\Math\L3\bin\Debug\L3.pdb
+G:\repos\17s-term\Math\L3\bin\Debug\ClassLib.dll
+G:\repos\17s-term\Math\L3\bin\Debug\ClassLib.pdb
+G:\repos\17s-term\Math\L3\obj\Debug\L3.Form1.resources
+G:\repos\17s-term\Math\L3\obj\Debug\L3.exe
+G:\repos\17s-term\Math\L3\obj\Debug\L3.pdb
+G:\repos\17s-term\Math\L3\obj\Debug\L3.csprojResolveAssemblyReference.cache

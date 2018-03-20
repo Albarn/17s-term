@@ -1,8 +1,7 @@
 package com.company;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -14,10 +13,10 @@ public class MainTest {
     public static double[][] matrix;
     public static int n,m;
 
-    @BeforeAll
+    @BeforeEach
     //random data gen before each test
-    public static void GenData(){
-        Random f=new Random(LocalDateTime.now().getNano());
+    public void GenData(){
+        Random f=new Random();
         n=f.nextInt(18)+2;
         m=f.nextInt(18)+2;
 
@@ -35,22 +34,25 @@ public class MainTest {
     @Test
     //checking out of bounds for method
     //Main.FindMaxesInRows()
-    public void IndexOutOfBounds1(){
+    public void FindMaxesInRows_IndexesOutOfBounds_ThrowsException(){
         try{
             //hand ranges, greater than n & m
             Main.FindMaxesInRows(matrix,n+1,m+2);
         }
-        catch (ArrayIndexOutOfBoundsException ex){
+        catch (HighRangeException ex){
             //if correct exception thrown
             //return, else test did not pass
             return;
+        }
+        catch (Exception ex){
+            fail("");
         }
         fail("");
     }
 
     @Test
     //check for negative index
-    public void NegativeRange(){
+    public void FindMaxesInRows_NegativeRange_ThrowsException(){
         try{
             //hand negative index
             //in this method will be creation
@@ -61,17 +63,37 @@ public class MainTest {
         catch (NegativeArraySizeException ex){
             return;
         }
+        catch (Exception ex){
+            fail("");
+        }
         fail("");
+    }
+
+
+    @Test
+    //check for correct max elements
+    public void FindMaxesInRows_NormalMatrix_ResultElementsShouldBeMax(){
+        try {
+            double maxes[][] = Main.FindMaxesInRows(matrix, n, m);
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                    //compare each element with max
+                    if (matrix[i][j] > maxes[i][1])
+                        fail("");
+        }
+        catch (Exception ex){
+            fail("");
+        }
     }
 
     @Test
     //out of bounds
     //in sort method(rows)
-    public void IndexOutOfBounds2(){
+    public void BubbleSort_IndexOfRowsOutOfBounds_ThrowsException(){
         try{
             Main.BubbleSort(matrix,n+1);
         }
-        catch (ArrayIndexOutOfBoundsException ex){
+        catch (HighRangeException ex){
             return;
         }
         fail("");
@@ -80,7 +102,7 @@ public class MainTest {
     @Test
     //out of bounds
     //in sort method(columns)
-    public void IndexOutOfBounds3(){
+    public void BubbleSort_IndexOfColumnsOutOfBounds_ThrowsException(){
         //for throwing out of bounds exception
         //we create matrix with one column
         //method sort second column
@@ -90,31 +112,26 @@ public class MainTest {
         try{
             Main.BubbleSort(value,n);
         }
-        catch (ArrayIndexOutOfBoundsException ex){
+        catch (HighRangeException ex){
             return;
         }
         fail("");
     }
 
-    @Test
-    //check for correct max elements
-    public void MaxesInRows(){
-        double maxes[][]=Main.FindMaxesInRows(matrix,n,m);
-        for(int i=0;i<n;i++)
-            for(int j=0;j<m;j++)
-                //compare each element with max
-                if(matrix[i][j]>maxes[i][1])
-                    fail("");
-    }
 
     @Test
     //check elements order after sort
-    public void SortOrder(){
-        double maxes[][]=Main.FindMaxesInRows(matrix,n,m);
-        Main.BubbleSort(maxes,n);
-        for(int i=0;i<n-1;i++)
-            //check non descending order for second column elements
-            if(maxes[i][1]>maxes[i+1][1])
-                fail("");
+    public void BubbleSort_NormalMatrix_SortOrderShouldBeAscending(){
+        try {
+            double maxes[][] = Main.FindMaxesInRows(matrix, n, m);
+            Main.BubbleSort(maxes, n);
+            for (int i = 0; i < n - 1; i++)
+                //check non descending order for second column elements
+                if (maxes[i][1] > maxes[i + 1][1])
+                    fail("");
+        }
+        catch (Exception ex){
+            fail("");
+        }
     }
 }
