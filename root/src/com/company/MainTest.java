@@ -96,6 +96,9 @@ public class MainTest {
         catch (HighRangeException ex){
             return;
         }
+        catch(MissingSecondColumnException ex){
+
+        }
         fail("");
     }
 
@@ -113,6 +116,9 @@ public class MainTest {
             Main.BubbleSort(value,n);
         }
         catch (HighRangeException ex){
+
+        }
+        catch (MissingSecondColumnException ex){
             return;
         }
         fail("");

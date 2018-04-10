@@ -37,7 +37,7 @@ public class Main {
 
     //sorting matrix by second column
     public  static  double[][] BubbleSort(double[][] matrix, int n)
-    throws HighRangeException{
+    throws HighRangeException, MissingSecondColumnException{
         try {
             double a=matrix[n-1][0];
         }
@@ -48,7 +48,7 @@ public class Main {
             double a=matrix[0][1];
         }
         catch (Exception ex){
-            throw new HighRangeException("column");
+            throw new MissingSecondColumnException();
         }
         for(int i=0; i < n; i++) 			// i - out cycle
         {
@@ -132,7 +132,7 @@ public class Main {
                         try{
                         nums[i][j]=in.nextDouble();
                         }catch (Exception ex){
-                            throw new NotRealExeption();
+                            throw new NotRealException();
                         }
                         break;
                     }catch (Exception ex){

@@ -10,6 +10,6 @@ public class NonIntegerRangeException extends Exception {
 
     @Override
     public String getMessage() {
-        return "matrix size "+parameterName+" is not integer";
+        return "matrix size "  + parameterName + " is not integer";
     }
 }

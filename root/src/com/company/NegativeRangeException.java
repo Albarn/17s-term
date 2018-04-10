@@ -10,6 +10,6 @@ public class NegativeRangeException extends Exception {
 
     @Override
     public String getMessage() {
-        return "matrix size "+parameterName+" is negative";
+        return "matrix size " + parameterName + " is negative";
     }
 }
