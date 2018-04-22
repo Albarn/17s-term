@@ -1,4 +1,4 @@
-package com.company;
+package com.company.exceptions;
 
 public class NotRealException extends Exception {
     @Override

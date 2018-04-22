@@ -2,11 +2,13 @@ package builders;
 
 import audioOutputs.AudioOutput;
 
+import java.io.Serializable;
+
 //abstract builder for audio outputs
 //builds name, price, power, weight
 //and inherited fields for headphones,
 //radio and speakers
-abstract public class AudioOutputBuilder {
+abstract public class AudioOutputBuilder implements Serializable {
     //object field
     protected AudioOutput audioOutput;
 

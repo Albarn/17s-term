@@ -1,4 +1,6 @@
 package com.company;
+import com.company.exceptions.HighRangeException;
+import com.company.exceptions.MissingSecondColumnException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

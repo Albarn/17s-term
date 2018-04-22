@@ -2,11 +2,12 @@ package builders;
 
 import audioOutputs.AudioOutput;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //Director for builders.AudioOutputBuilder
 //contents collection of created objects
-public class HiFiSystem {
+public class HiFiSystem implements Serializable {
     //builder field
     private AudioOutputBuilder audioOutputBuilder;
 

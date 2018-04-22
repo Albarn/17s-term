@@ -1,9 +1,11 @@
 package audioOutputs;
 
+import java.io.Serializable;
+
 //audio output device class
 //патерн builder hi fi система
 //построение системы из данных классов
-public abstract class AudioOutput {
+public abstract class AudioOutput implements Serializable {
     //name of device
     public String name;
     //price in ukrainian hryvnia

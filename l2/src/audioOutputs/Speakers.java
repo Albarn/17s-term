@@ -2,7 +2,9 @@ package audioOutputs;
 
 import audioOutputs.AudioOutput;
 
-public class Speakers extends AudioOutput {
+import java.io.Serializable;
+
+public class Speakers extends AudioOutput{
     //playback frequency in Hz
     private double minFrequency;
     private double maxFrequency;

@@ -1,0 +1,235 @@
+@startuml
+
+title __EXCEPTIONS's Class Diagram__\n
+
+  package com.company {
+    package com.company.exceptions {
+      class HighRangeException {
+          + parameterName : String
+          + HighRangeException()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  class WrappedPrintWriter {
+      - printWriter : PrintWriter
+      ~ WrappedPrintWriter()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  class WrappedPrintStream {
+      - printStream : PrintStream
+      ~ WrappedPrintStream()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  abstract class PrintStreamOrWriter {
+      - PrintStreamOrWriter()
+      {abstract} ~ lock()
+      {abstract} ~ println()
+  }
+  
+
+  class SentinelHolder {
+      {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+      {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+      - SentinelHolder()
+  }
+  
+
+  package com.company {
+    package com.company.exceptions {
+      class MissingSecondColumnException {
+          + getMessage()
+      }
+    }
+  }
+  
+
+  class WrappedPrintWriter {
+      - printWriter : PrintWriter
+      ~ WrappedPrintWriter()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  class WrappedPrintStream {
+      - printStream : PrintStream
+      ~ WrappedPrintStream()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  abstract class PrintStreamOrWriter {
+      - PrintStreamOrWriter()
+      {abstract} ~ lock()
+      {abstract} ~ println()
+  }
+  
+
+  class SentinelHolder {
+      {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+      {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+      - SentinelHolder()
+  }
+  
+
+  package com.company {
+    package com.company.exceptions {
+      class NegativeRangeException {
+          + parameterName : String
+          + NegativeRangeException()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  class WrappedPrintWriter {
+      - printWriter : PrintWriter
+      ~ WrappedPrintWriter()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  class WrappedPrintStream {
+      - printStream : PrintStream
+      ~ WrappedPrintStream()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  abstract class PrintStreamOrWriter {
+      - PrintStreamOrWriter()
+      {abstract} ~ lock()
+      {abstract} ~ println()
+  }
+  
+
+  class SentinelHolder {
+      {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+      {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+      - SentinelHolder()
+  }
+  
+
+  package com.company {
+    package com.company.exceptions {
+      class NonIntegerRangeException {
+          + parameterName : String
+          + NonIntegerRangeException()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  class WrappedPrintWriter {
+      - printWriter : PrintWriter
+      ~ WrappedPrintWriter()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  class WrappedPrintStream {
+      - printStream : PrintStream
+      ~ WrappedPrintStream()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  abstract class PrintStreamOrWriter {
+      - PrintStreamOrWriter()
+      {abstract} ~ lock()
+      {abstract} ~ println()
+  }
+  
+
+  class SentinelHolder {
+      {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+      {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+      - SentinelHolder()
+  }
+  
+
+  package com.company {
+    package com.company.exceptions {
+      class NotRealException {
+          + getMessage()
+      }
+    }
+  }
+  
+
+  class WrappedPrintWriter {
+      - printWriter : PrintWriter
+      ~ WrappedPrintWriter()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  class WrappedPrintStream {
+      - printStream : PrintStream
+      ~ WrappedPrintStream()
+      ~ lock()
+      ~ println()
+  }
+  
+
+  abstract class PrintStreamOrWriter {
+      - PrintStreamOrWriter()
+      {abstract} ~ lock()
+      {abstract} ~ println()
+  }
+  
+
+  class SentinelHolder {
+      {static} + STACK_TRACE_ELEMENT_SENTINEL : StackTraceElement
+      {static} + STACK_TRACE_SENTINEL : StackTraceElement[]
+      - SentinelHolder()
+  }
+  
+
+  HighRangeException +-down- WrappedPrintWriter
+  HighRangeException +-down- WrappedPrintStream
+  HighRangeException +-down- PrintStreamOrWriter
+  HighRangeException +-down- SentinelHolder
+  MissingSecondColumnException +-down- WrappedPrintWriter
+  MissingSecondColumnException +-down- WrappedPrintStream
+  MissingSecondColumnException +-down- PrintStreamOrWriter
+  MissingSecondColumnException +-down- SentinelHolder
+  NegativeRangeException +-down- WrappedPrintWriter
+  NegativeRangeException +-down- WrappedPrintStream
+  NegativeRangeException +-down- PrintStreamOrWriter
+  NegativeRangeException +-down- SentinelHolder
+  NonIntegerRangeException +-down- WrappedPrintWriter
+  NonIntegerRangeException +-down- WrappedPrintStream
+  NonIntegerRangeException +-down- PrintStreamOrWriter
+  NonIntegerRangeException +-down- SentinelHolder
+  NotRealException +-down- WrappedPrintWriter
+  NotRealException +-down- WrappedPrintStream
+  NotRealException +-down- PrintStreamOrWriter
+  NotRealException +-down- SentinelHolder
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

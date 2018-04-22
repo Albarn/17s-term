@@ -1,4 +1,6 @@
 package com.company;
+import com.company.exceptions.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +9,7 @@ public class Main {
     //returns array row index - max element
     public  static double[][]
     FindMaxesInRows(double[][] matrix,int n,int m)
-    throws HighRangeException, NegativeRangeException{
+    throws HighRangeException, NegativeRangeException {
         double res[][] = new double[n][2];
         if(n<0)throw  new NegativeRangeException("row");
         else if(m<0) throw  new NegativeRangeException("column");
@@ -37,7 +39,7 @@ public class Main {
 
     //sorting matrix by second column
     public  static  double[][] BubbleSort(double[][] matrix, int n)
-    throws HighRangeException, MissingSecondColumnException{
+    throws HighRangeException, MissingSecondColumnException {
         try {
             double a=matrix[n-1][0];
         }
