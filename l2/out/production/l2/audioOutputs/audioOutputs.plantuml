@@ -94,10 +94,27 @@ title __AUDIOOUTPUTS's Class Diagram__\n
           + FM : boolean
           + CD : boolean
           + USB : boolean
+          - radioThread : Thread
+          - hifiThread : Thread
           + toString()
           + setPower()
           + setPrice()
           + setWeight()
+          + Radio()
+          + Radio()
+          + getRadioThread()
+          + getHifiThread()
+          + setHifiThread()
+          + run()
+      }
+    }
+  }
+  
+
+  package  {
+    package audioOutputs {
+      class RadioState {
+          + isWorking : boolean
       }
     }
   }
@@ -162,8 +179,11 @@ title __AUDIOOUTPUTS's Class Diagram__\n
   }
   
 
+  AudioOutput -up-|> Serializable
   Headphones -up-|> AudioOutput
+  Radio -up-|> Runnable
   Radio -up-|> AudioOutput
+  Radio o-- RadioState : radioState
   Speakers -up-|> AudioOutput
 
 

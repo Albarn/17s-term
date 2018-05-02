@@ -98,6 +98,14 @@ title __L2's Class Diagram__\n
 
   package  {
     package audioOutputs {
+      class RadioState {
+      }
+    }
+  }
+  
+
+  package  {
+    package audioOutputs {
       class RadioTests {
       }
     }
@@ -144,13 +152,20 @@ title __L2's Class Diagram__\n
   }
   
 
+  AudioOutput -up-|> Serializable
+  AudioOutputBuilder -up-|> Serializable
   AudioOutputBuilder o-- AudioOutput : audioOutput
   FancyHeadphonesBuilder -up-|> AudioOutputBuilder
   FancyRadioBuilder -up-|> AudioOutputBuilder
   FancySpeakersBuilder -up-|> AudioOutputBuilder
   Headphones -up-|> AudioOutput
+  HiFiSystem -up-|> Serializable
+  HiFiSystem -up-|> Runnable
   HiFiSystem o-- AudioOutputBuilder : audioOutputBuilder
+  HiFiSystem o-- RadioState : radioState
+  Radio -up-|> Runnable
   Radio -up-|> AudioOutput
+  Radio o-- RadioState : radioState
   SimpleHeadphonesBuilder -up-|> AudioOutputBuilder
   SimpleRadioBuilder -up-|> AudioOutputBuilder
   SimpleSpeakersBuilder -up-|> AudioOutputBuilder

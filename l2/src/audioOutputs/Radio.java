@@ -1,8 +1,8 @@
 package audioOutputs;
 
-import audioOutputs.AudioOutput;
-
-public class Radio extends AudioOutput {
+public class Radio
+        extends AudioOutput
+        implements Runnable {
 
     public boolean AM;
     public boolean FM;
@@ -34,5 +34,56 @@ public class Radio extends AudioOutput {
     public void setWeight(double weight) {
         if (weight > 500 && weight < 4000)
             this.weight = weight;
+    }
+
+    public Radio(){
+
+    }
+
+    public Radio(RadioState radioState){
+        radioThread=new Thread(this);
+        this.radioState =radioState;
+    }
+
+    private Thread radioThread;
+
+    public Thread getRadioThread() {
+        return radioThread;
+    }
+
+    private Thread hifiThread=null;
+
+    public Thread getHifiThread() {
+        return hifiThread;
+    }
+
+    public void setHifiThread(Thread hifiThread) {
+        this.hifiThread = hifiThread;
+    }
+
+    private RadioState radioState;
+
+    @Override
+    public void run() {
+        synchronized (radioState){
+
+            //radio works
+            while (true) {
+
+                //when radio does not work we should make this thread WAITING
+                if(!radioState.isWorking || hifiThread.getState()==Thread.State.RUNNABLE){
+
+                    //notify for hi-fi system
+                    radioState.notify();
+                    try {
+
+                        //wait notification
+                        radioState.wait();
+                    } catch (InterruptedException e) {
+                        System.out.print(e.getMessage());
+                    }
+                }
+            }
+        }
     }
 }

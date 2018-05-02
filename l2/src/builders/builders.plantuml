@@ -63,9 +63,17 @@ title __BUILDERS's Class Diagram__\n
     package builders {
       class HiFiSystem {
           + constructedObjects : ArrayList<AudioOutput>
+          - hifiThread : Thread
+          - radioThread : Thread
           + setAudioOutputBuilder()
           + getAudioOutput()
           + constructAudioOutput()
+          + HiFiSystem()
+          + HiFiSystem()
+          + getHifiThread()
+          + getRadioThread()
+          + setRadioThread()
+          + run()
       }
     }
   }
@@ -125,11 +133,15 @@ title __BUILDERS's Class Diagram__\n
   }
   
 
+  AudioOutputBuilder -up-|> Serializable
   AudioOutputBuilder o-- AudioOutput : audioOutput
   FancyHeadphonesBuilder -up-|> AudioOutputBuilder
   FancyRadioBuilder -up-|> AudioOutputBuilder
   FancySpeakersBuilder -up-|> AudioOutputBuilder
+  HiFiSystem -up-|> Serializable
+  HiFiSystem -up-|> Runnable
   HiFiSystem o-- AudioOutputBuilder : audioOutputBuilder
+  HiFiSystem o-- RadioState : radioState
   SimpleHeadphonesBuilder -up-|> AudioOutputBuilder
   SimpleRadioBuilder -up-|> AudioOutputBuilder
   SimpleSpeakersBuilder -up-|> AudioOutputBuilder

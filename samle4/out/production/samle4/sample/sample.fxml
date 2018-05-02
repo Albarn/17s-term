@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="CENTER" gridLinesVisible="false" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" style="" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+  <children>
+    <Pane prefHeight="322.0" prefWidth="563.0" style="">
+      <children>
+        <Label layoutX="14.0" layoutY="14.0" text="Your Name:" />
+        <TextField fx:id="costumerNameTextField" layoutX="86.0" layoutY="8.0" onAction="#nameChanged" prefHeight="25.0" prefWidth="76.0" />
+        <Button layoutX="168.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveClick" prefWidth="63.0" text="Save" />
+        <Button layoutX="238.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadClick" prefWidth="63.0" text="Load" />
+        <ListView fx:id="devicesListView" layoutX="14.0" layoutY="69.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="287.0" />
+        <TabPane layoutX="310.0" layoutY="11.0" prefHeight="297.0" prefWidth="239.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="Radio">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Label layoutX="12.0" layoutY="6.0" text="Name:" />
+                    <TextField fx:id="radioName" layoutX="103.0" layoutY="3.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="32.0" text="Price" />
+                    <TextField fx:id="radioPrice" layoutX="103.0" layoutY="29.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="58.0" text="Power:" />
+                    <TextField fx:id="radioPower" layoutX="103.0" layoutY="55.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="86.0" text="Weight:" />
+                    <TextField fx:id="radioWeight" layoutX="103.0" layoutY="82.0" prefWidth="120.0" />
+                    <Button layoutX="181.0" layoutY="231.0" mnemonicParsing="false" onAction="#addRadio" text="Add" />
+                    <CheckBox fx:id="am" layoutX="11.0" layoutY="111.0" mnemonicParsing="false" text="AM" />
+                    <CheckBox fx:id="fm" layoutX="12.0" layoutY="131.0" mnemonicParsing="false" text="FM" />
+                    <CheckBox fx:id="cd" layoutX="61.0" layoutY="111.0" mnemonicParsing="false" text="CD" />
+                    <CheckBox fx:id="usb" layoutX="61.0" layoutY="131.0" mnemonicParsing="false" text="USB" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Headphones">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Label layoutX="12.0" layoutY="6.0" text="Name:" />
+                    <TextField fx:id="headphonesName" layoutX="103.0" layoutY="3.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="32.0" text="Price" />
+                    <TextField fx:id="headphonesPrice" layoutX="103.0" layoutY="29.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="58.0" text="Power:" />
+                    <TextField fx:id="headphonesPower" layoutX="103.0" layoutY="55.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="86.0" text="Weight:" />
+                    <TextField fx:id="headphonesWeight" layoutX="103.0" layoutY="82.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="111.0" text="Min frequency:" />
+                    <TextField id="headphonesMaxFrequency" fx:id="headphonesMinFrequency" layoutX="103.0" layoutY="108.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="138.0" text="Max frequency:" />
+                    <TextField id="headphonesMinFrequency" fx:id="headphonesMaxFrequency" layoutX="103.0" layoutY="135.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="165.0" text="Length:" />
+                    <TextField fx:id="headphonesLength" layoutX="103.0" layoutY="161.0" prefWidth="120.0" />
+                    <CheckBox fx:id="garniture" layoutX="11.0" layoutY="191.0" mnemonicParsing="false" text="Garniture" />
+                    <Button layoutX="180.0" layoutY="231.0" mnemonicParsing="false" onAction="#addHeadphones" text="Add" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Speakers">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Label layoutX="12.0" layoutY="6.0" text="Name:" />
+                    <TextField id="headphonesName" fx:id="speakersName" layoutX="103.0" layoutY="3.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="32.0" text="Price" />
+                    <TextField fx:id="speakersPrice" layoutX="103.0" layoutY="29.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="58.0" text="Power:" />
+                    <TextField fx:id="speakersPower" layoutX="103.0" layoutY="55.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="86.0" text="Weight:" />
+                    <TextField fx:id="speakersWeight" layoutX="103.0" layoutY="82.0" prefWidth="120.0" />
+                    <Label layoutX="12.0" layoutY="111.0" text="Min frequency:" />
+                    <TextField fx:id="speakersMinFrequency" layoutX="103.0" layoutY="108.0" prefWidth="120.0" />
+                    <Label layoutX="11.0" layoutY="139.0" text="Max frequency:" />
+                    <TextField fx:id="speakersMaxFrequency" layoutX="103.0" layoutY="135.0" prefWidth="120.0" />
+                    <CheckBox fx:id="portable" layoutX="11.0" layoutY="164.0" mnemonicParsing="false" text="Portable" />
+                    <Button layoutX="180.0" layoutY="231.0" mnemonicParsing="false" onAction="#addSpeakers" text="Add" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+        <Label layoutX="14.0" layoutY="44.0" text="Index:" />
+        <TextField id="removeIndexTextField" fx:id="indexTextField" layoutX="86.0" layoutY="37.0" prefHeight="25.0" prefWidth="76.0" />
+        <Button layoutX="168.0" layoutY="39.0" mnemonicParsing="false" onAction="#removeClick" prefWidth="63.0" text="Remove" />
+      </children>
+    </Pane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints />
+  </rowConstraints>
+</GridPane>

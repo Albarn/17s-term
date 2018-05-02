@@ -1,0 +1,7 @@
+F:\>path D:\tools\jdk\bin
+
+F:\>cd F:\repos\17s-term\l2\out\production\l2
+
+F:\repos\17s-term\l2\out\production\l2>jar --create --file l6.jar -m manifest.txt *.class audioOutputs/*.class builders/*.class
+
+F:\repos\17s-term\l2\out\production\l2>java -jar l6.jar
