@@ -89,6 +89,17 @@ namespace ClassLib
             xs[s] = ys[r];
             ys[r] = z;
 
+            //если влево уходит х, убираем у него минус
+            if (ys[r].Contains("-x"))
+            {
+                ys[r]=ys[r].Replace("-x", "x");
+            }
+            //если х уходит вверх, добавляем минус
+            if (xs[s].Contains("x"))
+            {
+                xs[s]=xs[s].Replace("x", "-x");
+            }
+
             //мжи, записываем в лог результат
             ModifiedAxialStep(a, n, m, r, s);
             if (log != null)
@@ -170,6 +181,17 @@ namespace ClassLib
             string z = xs[s];
             xs[s] = ys[r];
             ys[r] = z;
+
+            //если влево уходит х, убираем у него минус
+            if (ys[r].Contains("-x"))
+            {
+                ys[r]=ys[r].Replace("-x", "x");
+            }
+            //если х уходит вверх, добавляем минус
+            if (xs[s].Contains("x"))
+            {
+                xs[s]=xs[s].Replace("x", "-x");
+            }
             ModifiedAxialStep(a, n, m, r, s);
             if (log != null)
             {

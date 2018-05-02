@@ -156,7 +156,7 @@ namespace L2
             resLabel.Text = $"z = {a[n - 1, m - 1]}";
             for(int i=0;i<ys.Count;i++)
             {
-                if (ys[i][0] == '-')
+                if (ys[i][0] == 'x')
                     resLabel.Text += $"\n{ys[i]}:{a[i, m - 1]}";
             }
         }
