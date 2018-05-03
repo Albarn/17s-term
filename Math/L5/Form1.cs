@@ -161,7 +161,7 @@ namespace L5
             }
             for(int j=0;j<xs.Count;j++)
             {
-                if (xs[j].StartsWith("-x"))
+                if (!xs[j].StartsWith("-x"))
                 {
                     resLabel.Text += $"\n{xs[j].Split('|')[1]}:{a[n - 1, j].ToString("F2")}";
                 }

@@ -5,13 +5,13 @@ namespace ClassLib
 {
     public class Lab2
     {
-        public static void WriteSystemInLog(double[,] a,int n,int m, List<string> xs,List<string> ys, List<string> log)
+        public static void WriteSystemInLog(double[,] a, int n, int m, List<string> xs, List<string> ys, List<string> log, string leftFunc = "z", string upFunc = "1")
         {
             //заголовок с шапкой xs
             log.Add("\\\t");
             foreach (string x in xs)
                 log[log.Count - 1] += x + "\t";
-            log[log.Count - 1] += "1";
+            log[log.Count - 1] += upFunc;
 
             //матрица
             for (int i = 0; i < n; i++)
@@ -20,7 +20,7 @@ namespace ClassLib
                 if (i != n - 1)
                     log.Add(ys[i] + "\t");
                 else
-                    log.Add("z\t");
+                    log.Add(leftFunc + "\t");
                 for (int j = 0; j < m; j++)
                 {
                     log[log.Count - 1] += a[i, j].ToString("F2") + "\t";
