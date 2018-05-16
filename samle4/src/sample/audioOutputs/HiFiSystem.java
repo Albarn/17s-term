@@ -14,7 +14,7 @@ public class HiFiSystem implements Serializable {
 
     public String CustomerName;
 
-    public void Save(String fileName) throws IOException {
+    public void save(String fileName) throws IOException {
         //we use file stream for file
         FileOutputStream fos = new FileOutputStream(fileName);
         //object stream for serializing
@@ -25,7 +25,7 @@ public class HiFiSystem implements Serializable {
         oos.close();
     }
 
-    public void Load(String fileName) throws IOException {
+    public void load(String fileName) throws IOException {
         //we use file stream for file
         FileInputStream fis = new FileInputStream(fileName);
         //object stream for serializing

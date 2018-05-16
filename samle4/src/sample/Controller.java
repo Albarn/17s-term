@@ -5,8 +5,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import sample.audioOutputs.*;
 
 import java.io.IOException;
@@ -58,7 +56,7 @@ public class Controller {
     //load button click handler
     public void loadClick(ActionEvent actionEvent) {
         try {
-            hiFiSystem.Load(costumerNameTextField.getText());
+            hiFiSystem.load(costumerNameTextField.getText());
             updateControls();
         }
         //show exception message if it occurs
@@ -72,8 +70,9 @@ public class Controller {
     //save button click handler
     public void saveClick(ActionEvent actionEvent) {
         try {
-            hiFiSystem.CustomerName=costumerNameTextField.getText();
-            hiFiSystem.Save(hiFiSystem.CustomerName);
+            hiFiSystem.CustomerName
+                    =costumerNameTextField.getText();
+            hiFiSystem.save(hiFiSystem.CustomerName);
         }
         //show exception message if it occurs
         catch (IOException e) {

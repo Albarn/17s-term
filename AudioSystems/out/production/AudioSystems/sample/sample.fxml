@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane alignment="CENTER" hgap="10.0" prefHeight="300.0" prefWidth="500.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+  <children>
+    <Pane prefHeight="225.0" prefWidth="385.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <children>
+        <TabPane blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="DISABLE" layoutX="0.0" layoutY="0.0" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="false" pickOnBounds="false" prefHeight="300.0" prefWidth="500.0" rotateGraphic="false" side="TOP" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308">
+          <tabs>
+            <Tab text="Customers">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="500.0">
+                  <children>
+                    <TableView fx:id="customersView" disable="false" editable="true" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="210.0" prefWidth="460.0" tableMenuButtonVisible="true">
+                      <columns>
+                        <TableColumn editable="true" maxWidth="5000.0" minWidth="10.0" prefWidth="85.0" text="CustomerId" fx:id="customerIdColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" onEditCommit="#editCustomer" prefWidth="118.0" text="CustomerName" fx:id="customerNameColumn" />
+                      </columns>
+                    </TableView>
+                    <Button fx:id="addCustomerButton" layoutX="433.0" layoutY="234.0" mnemonicParsing="false" onAction="#addCustomerButtonClick" text="add" />
+                    <Button fx:id="removeCustomerButton" layoutX="366.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeCustomerButtonClick" text="remove" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Devices">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TableView id="customersView" fx:id="devicesView" disable="false" editable="true" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="460.0" tableMenuButtonVisible="true">
+                      <columns>
+                        <TableColumn editable="true" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="DeviceId" fx:id="deviceIdColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" onEditCommit="#editDeviceName" prefWidth="98.0" text="DeviceName" fx:id="deviceNameColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" onEditCommit="#editDevicePrice" prefWidth="56.0" text="Price" fx:id="priceColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" onEditCommit="#editDeviceWeight" prefWidth="65.0" text="Weight" fx:id="weightColumn" />
+                        <TableColumn onEditCommit="#editDeviceDescription" prefWidth="75.0" text="Description" fx:id="descriptionColumn" />
+                      </columns>
+                    </TableView>
+                    <Button id="addCustomerButton" layoutX="433.0" layoutY="234.0" mnemonicParsing="false" onAction="#addDeviceButtonClick" text="add" />
+                    <Button id="removeCustomerButton" layoutX="366.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeDeviceButtonClick" text="remove" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Products">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="500.0">
+                  <children>
+                    <TableView fx:id="productsView" id="customersView" disable="false" editable="true" focusTraversable="true" layoutX="14.0" layoutY="14.0" prefHeight="210.0" prefWidth="460.0" tableMenuButtonVisible="true">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="10.0"
+                                     prefWidth="81.0" text="ProductId" fx:id="productIdColumn" />
+                        <TableColumn editable="true" maxWidth="5000.0" minWidth="10.0"
+                                     onEditCommit="#editCustomerId" prefWidth="85.0" text="CustomerId" fx:id="productCustomerIdColumn" />
+                        <TableColumn editable="true" maxWidth="5000.0" minWidth="10.0" onEditCommit="#editDeviceId" prefWidth="85.0"
+                                     text="DeviceId" fx:id="productDeviceIdColumn" />
+                      </columns>
+                    </TableView>
+                    <Button id="addCustomerButton" layoutX="433.0" layoutY="234.0" mnemonicParsing="false" onAction="#addProductButtonClick" text="add" />
+                    <Button id="removeCustomerButton" layoutX="366.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeProductButtonClick" text="remove" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </Pane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+  <stylesheets>
+    <URL value="@main.css" />
+  </stylesheets>
+</GridPane>
