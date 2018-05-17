@@ -51,7 +51,7 @@ namespace ClassLib
             //z строке
             int s = -1;
             for (int j = 0; j < m - 1; j++)
-                if (a[n - 1, j] < 0)
+                if (a[n - 1, j] < -0.0001)
                 {
                     s = j;
                     break;
@@ -69,7 +69,7 @@ namespace ClassLib
             for (int i = 0; i < n - 1; i++)
             {
                 double dev = a[i, m - 1] / a[i, s];
-                if (dev >= 0)
+                if (dev >= -0.0001)
                 {
                     if (r == -1)
                         r = i;
@@ -135,7 +135,7 @@ namespace ClassLib
             int r = -1;
             for (int i = 0; i < n - 1; i++)
             {
-                if (a[i, m - 1] < 0)
+                if (a[i, m - 1] < -0.0001)
                 {
                     r = i;
                     break;
@@ -150,7 +150,7 @@ namespace ClassLib
             //строке r
             int s = -1;
             for (int j = 0; j < m - 1; j++)
-                if (a[r, j] < 0)
+                if (a[r, j] < -0.0001)
                 {
                     s = j;
                     break;
@@ -165,7 +165,7 @@ namespace ClassLib
             for (int i = 0; i < n - 1; i++)
             {
                 double dev = a[i, m - 1] / a[i, s];
-                if (dev >= 0)
+                if (dev >= -0.0001)
                 {
                     if (r == -1)
                         r = i;

@@ -174,7 +174,7 @@ namespace L3
             resLabel.Text = $"z = {a[localN - 1, localM - 1].ToString("F2")}";
             for(int i=0;i<ys.Count;i++)
             {
-                if (ys[i][0] == '-')
+                if (ys[i][0] == 'x')
                     resLabel.Text += $"\n{ys[i]}:{a[i, localM - 1].ToString("F2")}";
             }
         }

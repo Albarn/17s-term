@@ -139,15 +139,16 @@ namespace L4
                 {
                     "y1","y2","y3"
                 });
+            int localN = n, localM = m;
             try
             {
                 do
                 {
-                    Lab2.FindBasicSolution(a, n, m, xs, ys, log);
-                    Lab2.FindOptimalSolution(a, n, m, xs, ys, log);
+                    Lab2.FindBasicSolution(a, localN, localM, xs, ys, log);
+                    Lab2.FindOptimalSolution(a, localN, localM, xs, ys, log);
                 }
                 while (Lab4.AddConstraint(
-                    ref a, ref n, ref m, xs, ys, log));
+                    ref a, ref localN, ref localM, xs, ys, log));
             }
             catch (Exception ex)
             {
@@ -158,11 +159,11 @@ namespace L4
 
             //выводим максимум
             //и коэффициенты при х
-            resLabel.Text = $"z = {a[n - 1, m - 1]}";
+            resLabel.Text = $"z = {a[localN - 1, localM - 1].ToString("F2")}";
             for(int i=0;i<ys.Count;i++)
             {
                 if (ys[i][0] == 'x')
-                    resLabel.Text += $"\n{ys[i]}:{a[i, m - 1]}";
+                    resLabel.Text += $"\n{ys[i]}:{a[i, localM - 1].ToString("F2")}";
             }
         }
     }

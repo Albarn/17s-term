@@ -6,23 +6,31 @@ namespace ClassLib
 {
     public class Lab1
     {
+        /// <summary>
+        /// сохранение лога в файл при помощи обозревателя файлов
+        /// </summary>
+        /// <param name="log">лог</param>
         public static void SaveLog(List<string> log)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.CheckFileExists = false;
-            openFileDialog1.ShowDialog();
-            if(File.Exists(openFileDialog1.FileName))
-                File.Delete(openFileDialog1.FileName);
-            StreamWriter writer = new StreamWriter(
-                new FileStream(openFileDialog1.FileName, FileMode.Create));
-            try
+            //выбор файла
+            SaveFileDialog openFileDialog1 = new SaveFileDialog();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                foreach (string line in log)
-                    writer.WriteLine(line);
-            }
-            finally
-            {
-                writer.Close();
+                if (File.Exists(openFileDialog1.FileName))
+                    File.Delete(openFileDialog1.FileName);
+
+                //построчная запись лога в файл
+                StreamWriter writer = new StreamWriter(
+                    new FileStream(openFileDialog1.FileName, FileMode.Create));
+                try
+                {
+                    foreach (string line in log)
+                        writer.WriteLine(line);
+                }
+                finally
+                {
+                    writer.Close();
+                }
             }
         }
 
@@ -88,14 +96,16 @@ namespace ClassLib
                     a[i, j] /= ars;
                 }
 
-
-            //запись р-та в лог
-            for (int i = 0; i < n; i++)
+            if (log != null)
             {
-                log.Add("");
-                for (int j = 0; j < m; j++)
+                //запись р-та в лог
+                for (int i = 0; i < n; i++)
                 {
-                    log[log.Count - 1] += a[i, j].ToString("F2") + "\t";
+                    log.Add("");
+                    for (int j = 0; j < m; j++)
+                    {
+                        log[log.Count - 1] += a[i, j].ToString("F2") + "\t";
+                    }
                 }
             }
         }
