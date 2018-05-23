@@ -1,4 +1,4 @@
-package sample.db;
+package sample.models;
 
 public class InvalidFieldValueException extends Exception {
 

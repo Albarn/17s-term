@@ -1,4 +1,4 @@
-package sample.db;
+package sample.models;
 
 import javafx.beans.property.*;
 
@@ -28,11 +28,7 @@ public class Product {
     }
 
     public void setCustomerId(Integer customer) throws InvalidFieldValueException {
-        if(customer>0) {
-            this.customerId.setValue(customer);
-        } else {
-            throw new InvalidFieldValueException("customer id should be positive");
-        }
+        this.customerId.setValue(customer);
     }
 
     public void setDeviceId(Integer deviceId) throws InvalidFieldValueException {

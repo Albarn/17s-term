@@ -1,16 +1,18 @@
-package sample.db;
+package sample.models;
 
 import javafx.beans.property.*;
 
-import java.security.InvalidParameterException;
-
+//description of device
 public class Device {
+
+    //device info
     private ObjectProperty<Integer> deviceId=new SimpleObjectProperty<>();
     private StringProperty deviceName=new SimpleStringProperty();
     private ObjectProperty<Float> price=new SimpleObjectProperty<>();
     private ObjectProperty<Float> weight=new SimpleObjectProperty<>();
     private StringProperty description=new SimpleStringProperty();
 
+    //device fields accessors
     public Integer getDeviceId() {
         return deviceId.get();
     }
@@ -39,19 +41,26 @@ public class Device {
         }
     }
 
-    public void setDeviceName(String deviceName) {
-        this.deviceName.setValue(deviceName);
+    public void setDeviceName(String deviceName) throws InvalidFieldValueException {
+        if(deviceName!=null&&!deviceName.equals(""))
+        {
+            this.deviceName.setValue(deviceName);
+        }
+        else {
+            throw new InvalidFieldValueException("device name should not be empty");
+        }
     }
 
     public void setDescription(String description) {
         this.description.setValue(description);
     }
 
-    public void setPrice(float price) throws IllegalArgumentException {
+    public void setPrice(float price) throws InvalidFieldValueException {
+        //if price is negative, then          
         if(price>=0){
             this.price.set(price);
         }else {
-            throw new IllegalArgumentException("price should not be negative");
+            throw new InvalidFieldValueException("price should not be negative");
         }
     }
 
