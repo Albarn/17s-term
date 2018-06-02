@@ -46,6 +46,9 @@
     <Compile Include="Lab2.cs" />
     <Compile Include="Lab3.cs" />
     <Compile Include="Lab4.cs" />
+    <Compile Include="Lab6.cs" />
+    <Compile Include="Lab7.cs" />
+    <Compile Include="Lab8.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
